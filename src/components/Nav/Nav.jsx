@@ -20,15 +20,20 @@ function Nav() {
   return (
     <div className="nav">
       <Link to="/home">
-        <h2 className="nav-title">Prime Solo Project</h2>
+        <h2 className="nav-title">in media res</h2>
       </Link>
       <div>
         <Link className="navLink" to={loginLinkData.path}>
           {loginLinkData.text}
         </Link>
 
+        
+
         {user.id && (
           <>
+            <Link className="navLink" to="/add">
+              Add Entry
+            </Link>
             <Link className="navLink" to="/info">
               Info Page
             </Link>

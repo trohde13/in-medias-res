@@ -1,12 +1,6 @@
 import React from 'react';
 import { Grid, TextField, makeStyles, InputLabel, MenuItem, FormHelperText, FormControl, Select } from '@material-ui/core';
-import 'date-fns';
-import DateFnsUtils from '@date-io/date-fns';
-import {
-  MuiPickersUtilsProvider,
-  KeyboardTimePicker,
-  KeyboardDatePicker,
-} from '@material-ui/pickers';
+
 
 
 const useStyles = makeStyles((theme) => ({
@@ -17,12 +11,13 @@ const useStyles = makeStyles((theme) => ({
         },
     formControl: {
       margin: theme.spacing(1),
-      minWidth: 120,
+      minWidth: 400,
     },
     selectEmpty: {
       marginTop: theme.spacing(2),
     },
-  }));
+  }
+}));
 
 
 function AddEntry() {
@@ -36,7 +31,29 @@ function AddEntry() {
         status: ''
     });
 
-    const [selectedDate, setSelectedDate] = React.useState(new Date('2014-08-18T21:11:54'));
+    // const [selectedDate, setSelectedDate] = React.useState(new Date('2014-08-18T21:11:54'));
+
+
+    //function to update state from input fields
+    const handleChange = (key, event) => {
+        console.log('in handleChange')
+
+        switch(key){
+            case 'title':
+                setNewMedia({...newMedia, title: event.target.value})
+                break;
+            case 'author':
+                setNewMedia({...newMedia, author: event.target.value})
+                break;
+            case 'thoughts':
+                setNewMedia({...newMedia, thoughts: event.target.value})
+                break;
+            case 'status':
+                setNewMedia({...newMedia, status: event.target.value})
+                break;
+        }
+    }
+
 
     
 
@@ -45,10 +62,10 @@ function AddEntry() {
     const handleAddMedia = (event) => {
         console.log('clicked handleAddMedia');
 
-        event.preventDefault();
+        //event.preventDefault();
 
         //setting date
-        setSelectedDate(date);
+        // setSelectedDate(date);
 
         //dispatch here:
 
@@ -66,23 +83,7 @@ function AddEntry() {
         <div className={classes.root}>
 
             {/* select date for entry */}
-            <MuiPickersUtilsProvider utils={DateFnsUtils}>
-                <Grid container justify="space-around">
-                    <KeyboardDatePicker
-                    disableToolbar
-                    variant="inline"
-                    format="MM/dd/yyyy"
-                    margin="normal"
-                    id="date-picker-inline"
-                    label="select date for entry"
-                    value={selectedDate}
-                    onChange={(event) => handleAddMedia('author', event)}
-                    KeyboardButtonProps={{
-                        'aria-label': 'change date',
-                    }}
-                    />
-                </Grid>
-            </MuiPickersUtilsProvider>
+            
 
             {/* select media type */}
             <div>
@@ -92,8 +93,9 @@ function AddEntry() {
                     labelId="type-input"
                     id="simple-select-outlined"
                     value={newMedia.media_type_id}
-                    onChange={(event) => handleAddMedia('type', event)}
+                    onChange={(event) => handleChange('type', event)}
                     label="type"
+                    style={{ width: 250, margin: 8 }}
                     >
                     <MenuItem value="">
                         <em>None</em>
@@ -110,15 +112,16 @@ function AddEntry() {
                 <TextField
                     id="outlined-full-width"
                     label="title ..."
-                    style={{ margin: 8 }}
-                    helperText="Full width!"
+                    style={{ width: 250, margin: 8 }}
+                    placeholder="enter title"
                     fullWidth
                     margin="normal"
                     InputLabelProps={{
                         shrink: true,
                     }}
+                    type="text"
                     value={newMedia.title}
-                    onChange={(event) => handleAddMedia('title', event)}
+                    onChange={(event) => handleChange('title', event)}
                     variant="outlined"
                 />
             </div>
@@ -126,15 +129,15 @@ function AddEntry() {
                 <TextField
                     id="outlined-full-width"
                     label="author ..."
-                    style={{ margin: 8 }}
-                    helperText="Full width!"
+                    style={{ width: 250, margin: 8 }}
+                    placeholder="enter author"
                     fullWidth
                     margin="normal"
                     InputLabelProps={{
                         shrink: true,
                     }}
                     value={newMedia.author}
-                    onChange={(event) => handleAddMedia('author', event)}
+                    onChange={(event) => handleChange('author', event)}
                     variant="outlined"
                 />
             </div>
@@ -144,9 +147,10 @@ function AddEntry() {
                     label="thoughts ..."
                     multiline
                     rows={4}
+                    style={{ width: 250, margin: 8 }}
                     defaultValue="Default Value"
                     value={newMedia.thoughts}
-                    onChange={(event) => handleAddMedia('thoughts', event)}
+                    onChange={(event) => handleChange('thoughts', event)}
                     variant="outlined"
                 />
             </div>
@@ -157,8 +161,9 @@ function AddEntry() {
                     labelId="status-input"
                     id="simple-select-outlined"
                     value={newMedia.status}
-                    onChange={(event) => handleAddMedia('status', event)}
+                    onChange={(event) => handleChange('status', event)}
                     label="status"
+                    style={{ width: 250, margin: 8 }}
                     >
                     <MenuItem value="">
                         <em>None</em>
@@ -174,3 +179,5 @@ function AddEntry() {
     )
 
 }; //end AddEntry
+
+export default AddEntry;
