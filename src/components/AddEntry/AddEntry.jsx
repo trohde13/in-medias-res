@@ -1,5 +1,7 @@
 import React from 'react';
-import { Grid, TextField, makeStyles, InputLabel, MenuItem, FormHelperText, FormControl, Select } from '@material-ui/core';
+import { useState, useEffect } from 'react';
+import { Grid, TextField, makeStyles, InputLabel, MenuItem, FormHelperText, FormControl, Select, Button } from '@material-ui/core';
+import DatePicker from 'react-date-picker';
 
 
 
@@ -31,7 +33,7 @@ function AddEntry() {
         status: ''
     });
 
-    // const [selectedDate, setSelectedDate] = React.useState(new Date('2014-08-18T21:11:54'));
+    const [date, setDate] = useState(new Date());
 
 
     //function to update state from input fields
@@ -83,8 +85,12 @@ function AddEntry() {
         <div className={classes.root}>
 
             {/* select date for entry */}
-            
-
+            <div className="datePicker">
+                <DatePicker
+                    onChange={setDate}
+                    value={date}
+                />
+            </div>
             {/* select media type */}
             <div>
                 <FormControl variant="outlined" className={classes.formControl}>
@@ -173,6 +179,11 @@ function AddEntry() {
                     <MenuItem value={'Abandoned'}>Abandoned</MenuItem>
                     </Select>
                 </FormControl>
+                <div>
+                    <Button>Cancel</Button>
+                    <Button>Add Media</Button>
+                    <Button>Submit</Button>
+                </div>
             </div>
         </div>
 

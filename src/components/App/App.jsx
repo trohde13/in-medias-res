@@ -20,6 +20,8 @@ import LandingPage from '../LandingPage/LandingPage';
 import LoginPage from '../LoginPage/LoginPage';
 import RegisterPage from '../RegisterPage/RegisterPage';
 import AddEntry from '../AddEntry/AddEntry';
+import Dashboard from '../Dashboard/Dashboard';
+import Journal from '../Journal/Journal';
 
 import './App.css';
 
@@ -65,6 +67,22 @@ function App() {
             path="/add"
           >
             <AddEntry />
+          </ProtectedRoute>
+
+          <ProtectedRoute
+            // logged in shows Journal else shows LoginPage
+            exact
+            path="/journal"
+          >
+            <Journal />
+          </ProtectedRoute>
+
+          <ProtectedRoute
+            // logged in shows Dashboard else shows LoginPage
+            exact
+            path="/dashboard"
+          >
+            <Dashboard />
           </ProtectedRoute>
 
           <ProtectedRoute
