@@ -2,7 +2,7 @@ import React from 'react';
 import { useState, useEffect } from 'react';
 import { Grid, TextField, makeStyles, InputLabel, MenuItem, FormHelperText, FormControl, Select, Button } from '@material-ui/core';
 import DatePicker from 'react-date-picker';
-
+import { useHistory } from 'react-router-dom';
 
 
 const useStyles = makeStyles((theme) => ({
@@ -26,6 +26,8 @@ function AddEntry() {
 
     const classes = useStyles();
 
+    const history = useHistory();
+
     const [newMedia, setNewMedia] = React.useState({
         media_type_id: '',
         title: '',
@@ -34,10 +36,11 @@ function AddEntry() {
         status: '',
         year: '',
         season: '',
-        episode: ''
+        episode: '',
+        date: ''
     });
 
-    const [date, setDate] = useState(new Date());
+    // const [date, setDate] = useState(new Date());
 
 
     //function to update state from input fields
@@ -73,31 +76,78 @@ function AddEntry() {
                 setNewMedia({...newMedia, title: event.target.value})
                 break;
         }
-    }
+    }; //end handleChange
 
 
+    //CLICK FUNCTIONS:
+
+    //onClick function to cancel adding media and return to journal page
+    const sendJournal = () => {
+        history.push('/journal');
+    }; //end sendHome
     
-
-    
-    // onClick to add new media
+    // onClick to add new media and reset add page
     const handleAddMedia = (event) => {
         console.log('clicked handleAddMedia');
 
         //event.preventDefault();
 
         //setting date
-        // setSelectedDate(date);
+        // setDate(date);
 
         //dispatch here:
+        dispatch({
+            type: 'ADD_MEDIA',
+            payload: newMedia
+        });
 
         //adding new media item
         setNewMedia({
+            media_type_id: '',
             title: '',
             author: '',
             thoughts: '',
-            status: ''
+            status: '',
+            year: '',
+            season: '',
+            episode: '',
+            date: ''
         });
-    };
+
+        history.push('/add')
+
+    }; //end handleAddMedia
+
+    // onClick to add new media and reset add page
+    const handleSubmit = (event) => {
+        console.log('clicked handleSubmit');
+
+        //event.preventDefault();
+
+        //setting date
+        // setDate(date);
+
+        //dispatch here:
+        dispatch({
+            type: 'ADD_MEDIA',
+            payload: newMedia
+        });
+
+        //adding new media item
+        setNewMedia({
+            media_type_id: '',
+            title: '',
+            author: '',
+            thoughts: '',
+            status: '',
+            year: '',
+            season: '',
+            episode: ''
+        });
+
+        history.push('/journal')
+
+    }; //end handleSubmit
 
 
     return (
@@ -106,8 +156,8 @@ function AddEntry() {
             {/* select date for entry */}
             <div>
                 <DatePicker
-                    onChange={setDate}
-                    value={date}
+                    onChange={setNewMedia}
+                    value={newMedia.date}
                     className="datePicker"
                 />
             </div>
@@ -200,9 +250,24 @@ function AddEntry() {
                     </Select>
                 </FormControl>
                 <div>
-                    <Button>Cancel</Button>
-                    <Button>Add Media</Button>
-                    <Button>Submit</Button>
+                    <Button
+                        variant="outlined"
+                        onClick={sendJournal}
+                    >
+                        Cancel
+                    </Button>
+                    <Button
+                        variant="outlined"
+                        onClick={handleAddMedia}
+                    >
+                        Add Media
+                    </Button>
+                    <Button
+                        variant="outlined"
+                        onClick={handleSubmit}
+                    >
+                        Submit
+                    </Button>
                 </div>
             </div>
         </div>
