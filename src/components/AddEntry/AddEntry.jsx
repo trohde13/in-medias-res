@@ -27,10 +27,14 @@ function AddEntry() {
     const classes = useStyles();
 
     const [newMedia, setNewMedia] = React.useState({
+        media_type_id: '',
         title: '',
         author: '',
         thoughts: '',
-        status: ''
+        status: '',
+        year: '',
+        season: '',
+        episode: ''
     });
 
     const [date, setDate] = useState(new Date());
@@ -41,6 +45,9 @@ function AddEntry() {
         console.log('in handleChange')
 
         switch(key){
+            case 'media_type_id':
+                setNewMedia({...newMedia, title: event.target.value})
+                break;
             case 'title':
                 setNewMedia({...newMedia, title: event.target.value})
                 break;
@@ -52,6 +59,18 @@ function AddEntry() {
                 break;
             case 'status':
                 setNewMedia({...newMedia, status: event.target.value})
+                break;
+            case 'year':
+                setNewMedia({...newMedia, title: event.target.value})
+                break;
+            case 'season':
+                setNewMedia({...newMedia, title: event.target.value})
+                break;
+            case 'episode':
+                setNewMedia({...newMedia, title: event.target.value})
+                break;
+            case 'date':
+                setNewMedia({...newMedia, title: event.target.value})
                 break;
         }
     }
@@ -85,10 +104,11 @@ function AddEntry() {
         <div className={classes.root}>
 
             {/* select date for entry */}
-            <div className="datePicker">
+            <div>
                 <DatePicker
                     onChange={setDate}
                     value={date}
+                    className="datePicker"
                 />
             </div>
             {/* select media type */}

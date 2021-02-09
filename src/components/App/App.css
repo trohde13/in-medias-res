@@ -115,4 +115,7 @@ input {
 .datePicker {
   width: 250px; 
   margin: 8px;
+  border-radius: 3px;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
 }
