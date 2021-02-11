@@ -1,8 +1,15 @@
 import React from 'react';
 import { useState, useEffect } from 'react';
 import { Grid, TextField, makeStyles, InputLabel, MenuItem, FormHelperText, FormControl, Select, Button } from '@material-ui/core';
+import Dialog from '@material-ui/core/Dialog';
+import DialogActions from '@material-ui/core/DialogActions';
+import DialogContent from '@material-ui/core/DialogContent';
+import DialogContentText from '@material-ui/core/DialogContentText';
+import DialogTitle from '@material-ui/core/DialogTitle';
 import DatePicker from 'react-date-picker';
 import { useHistory } from 'react-router-dom';
+
+
 
 
 const useStyles = makeStyles((theme) => ({
@@ -24,19 +31,60 @@ const useStyles = makeStyles((theme) => ({
 
 function AddEntry() {
 
+    //Dialog:
+    const [openBook, setOpenBook] = React.useState(false);
+    const [openMovie, setOpenMovie] = React.useState(false);
+    const [openTelevision, setOpenTelevision] = React.useState(false);
+    const [openPodcast, setOpenPodcast] = React.useState(false);
+
+
+    const handleClickOpenBook = () => {
+        setOpenBook(true);   
+    };
+
+    const handleClickOpenMovie = () => {
+        setOpenMovie(true);  
+    };
+
+    const handleClickOpenTelevision = () => {
+        setOpenTelevision(true);
+    };
+
+    const handleClickOpenPodcast = () => {
+        setOpenPodcast(true);
+    };
+
+    const handleClose = () => {
+         setOpenBook(false);
+    };
+
+
     const classes = useStyles();
 
     const history = useHistory();
 
+    
+
     const [newMedia, setNewMedia] = React.useState({
         media_type_id: '',
-        title: '',
+        title_book: '',
         author: '',
-        thoughts: '',
-        status: '',
+        thoughts_book: '',
+        status_book: '',
+        title_movie: '',
         year: '',
-        season: '',
-        episode: '',
+        thoughts_movie: '',
+        status_movie: '',
+        title_television: '',
+        season_television: '',
+        episode_television: '',
+        thoughts_television: '',
+        status_television: '',
+        title_podcast: '',
+        season_podcast: '',
+        episode_podcast: '',
+        thoughts_podcast: '',
+        status_podcast: '',
         date: ''
     });
 
@@ -49,28 +97,61 @@ function AddEntry() {
 
         switch(key){
             case 'media_type_id':
-                setNewMedia({...newMedia, title: event.target.value})
+                setNewMedia({...newMedia, media_type_id: event.target.value})
                 break;
-            case 'title':
-                setNewMedia({...newMedia, title: event.target.value})
+            case 'title_book':
+                setNewMedia({...newMedia, title_book: event.target.value})
                 break;
             case 'author':
                 setNewMedia({...newMedia, author: event.target.value})
                 break;
-            case 'thoughts':
-                setNewMedia({...newMedia, thoughts: event.target.value})
+            case 'thoughts_book':
+                setNewMedia({...newMedia, thoughts_book: event.target.value})
                 break;
-            case 'status':
-                setNewMedia({...newMedia, status: event.target.value})
+            case 'status_book':
+                setNewMedia({...newMedia, status_book: event.target.value})
+                break;
+            case 'title_movie':
+                setNewMedia({...newMedia, title_movie: event.target.value})
                 break;
             case 'year':
-                setNewMedia({...newMedia, title: event.target.value})
+                setNewMedia({...newMedia, year: event.target.value})
                 break;
-            case 'season':
-                setNewMedia({...newMedia, title: event.target.value})
+            case 'thoughts_movie':
+                setNewMedia({...newMedia, thoughts_movie: event.target.value})
                 break;
-            case 'episode':
-                setNewMedia({...newMedia, title: event.target.value})
+            case 'status_movie':
+                setNewMedia({...newMedia, status_movie: event.target.value})
+                break;    
+            case 'title_television':
+                setNewMedia({...newMedia, title_television: event.target.value})
+                break;
+            case 'season_television':
+                setNewMedia({...newMedia, season_television: event.target.value})
+                break;
+            case 'episode_television':
+                setNewMedia({...newMedia, episode_television: event.target.value})
+                break;
+            case 'thoughts_television':
+                setNewMedia({...newMedia, thoughts_television: event.target.value})
+                break;
+            case 'status_television':
+                setNewMedia({...newMedia, status_television: event.target.value})
+                break;
+            case 'title_podcast':
+                setNewMedia({...newMedia, title_podcast: event.target.value})
+                break;
+            case 'season_podcast':
+                setNewMedia({...newMedia, season_podcast: event.target.value})
+                break;
+            case 'episode_podcast':
+                setNewMedia({...newMedia, episode_podcast: event.target.value})
+                break;
+            case 'thoughts_podcast':
+                setNewMedia({...newMedia, thoughts_podcast: event.target.value})
+                break;
+            case 'status_podcast':
+                setNewMedia({...newMedia, status_podcast: event.target.value})
                 break;
             case 'date':
                 setNewMedia({...newMedia, title: event.target.value})
@@ -89,12 +170,6 @@ function AddEntry() {
     // onClick to add new media and reset add page
     const handleAddMedia = (event) => {
         console.log('clicked handleAddMedia');
-
-        //event.preventDefault();
-
-        //setting date
-        // setDate(date);
-
         //dispatch here:
         dispatch({
             type: 'ADD_MEDIA',
@@ -104,13 +179,24 @@ function AddEntry() {
         //adding new media item
         setNewMedia({
             media_type_id: '',
-            title: '',
+            title_book: '',
             author: '',
-            thoughts: '',
-            status: '',
+            thoughts_book: '',
+            status_book: '',
+            title_movie: '',
             year: '',
-            season: '',
-            episode: '',
+            thoughts_movie: '',
+            status_movie: '',
+            title_television: '',
+            season_television: '',
+            episode_television: '',
+            thoughts_television: '',
+            status_television: '',
+            title_podcast: '',
+            season_podcast: '',
+            episode_podcast: '',
+            thoughts_podcast: '',
+            status_podcast: '',
             date: ''
         });
 
@@ -136,13 +222,25 @@ function AddEntry() {
         //adding new media item
         setNewMedia({
             media_type_id: '',
-            title: '',
+            title_book: '',
             author: '',
-            thoughts: '',
-            status: '',
+            thoughts_book: '',
+            status_book: '',
+            title_movie: '',
             year: '',
-            season: '',
-            episode: ''
+            thoughts_movie: '',
+            status_movie: '',
+            title_television: '',
+            season_television: '',
+            episode_television: '',
+            thoughts_television: '',
+            status_television: '',
+            title_podcast: '',
+            season_podcast: '',
+            episode_podcast: '',
+            thoughts_podcast: '',
+            status_podcast: '',
+            date: ''
         });
 
         history.push('/journal')
@@ -153,14 +251,517 @@ function AddEntry() {
     return (
         <div className={classes.root}>
 
-            {/* select date for entry */}
             <div>
-                <DatePicker
-                    onChange={setNewMedia}
-                    value={newMedia.date}
-                    className="datePicker"
-                />
+                <Button
+                    variant="outlined"
+                    onClick={handleClickOpenBook}
+                >
+                     Add Book
+                </Button>
+
+                {/* Dialog Form */}
+                <div>
+                    <Dialog open={openBook} onClose={handleClose} aria-labelledby="form-dialog-title">
+                        <DialogTitle id="form-dialog-title">Subscribe</DialogTitle>
+                        <DialogContent>
+                        <DialogContentText>
+                        {/* select date for entry */}
+                        <div>
+                            <DatePicker
+                                onChange={setNewMedia}
+                                value={newMedia.date}
+                                className="datePicker"
+                            />
+                        </div>
+
+                        {/* input fields for title, author, thoughts */}
+                        <div>    
+                            <TextField
+                                id="outlined-full-width"
+                                label="title ..."
+                                style={{ width: 250, margin: 8 }}
+                                placeholder="enter title"
+                                fullWidth
+                                margin="normal"
+                                InputLabelProps={{
+                                    shrink: true,
+                                }}
+                                type="text"
+                                value={newMedia.title}
+                                onChange={(event) => handleChange('title', event)}
+                                variant="outlined"
+                            />
+                        </div>
+                        <div>
+                            <TextField
+                                id="outlined-full-width"
+                                label="author ..."
+                                style={{ width: 250, margin: 8 }}
+                                placeholder="enter author"
+                                fullWidth
+                                margin="normal"
+                                InputLabelProps={{
+                                    shrink: true,
+                                }}
+                                value={newMedia.author}
+                                onChange={(event) => handleChange('author', event)}
+                                variant="outlined"
+                            />
+                        </div>
+                        <div>
+                            <TextField
+                                id="outlined-multiline-static"
+                                label="thoughts ..."
+                                multiline
+                                rows={4}
+                                style={{ width: 250, margin: 8 }}
+                                defaultValue="Default Value"
+                                value={newMedia.thoughts}
+                                onChange={(event) => handleChange('thoughts', event)}
+                                variant="outlined"
+                            />
+                        </div>
+
+                        {/* Status of media dropdown */}
+                        <div>
+                            <FormControl variant="outlined" className={classes.formControl}>
+                                <InputLabel id="status-input">status ...</InputLabel>
+                                <Select
+                                labelId="status-input"
+                                id="simple-select-outlined"
+                                value={newMedia.status}
+                                onChange={(event) => handleChange('status', event)}
+                                label="status"
+                                style={{ width: 250, margin: 8 }}
+                                >
+                                <MenuItem value="">
+                                    <em>None</em>
+                                </MenuItem>
+                                <MenuItem value={'Current'}>Current</MenuItem>
+                                <MenuItem value={'Finished'}>Finished</MenuItem>
+                                <MenuItem value={'Abandoned'}>Abandoned</MenuItem>
+                                </Select>
+                            </FormControl>
+                        </div>    
+                        </DialogContentText>
+                        </DialogContent>
+
+                        {/* buttons for cancel, add new media, submit */}
+                        <DialogActions>
+                            <div>
+                                <Button
+                                    variant="outlined"
+                                    onClick={sendJournal}
+                                >
+                                    Cancel
+                                </Button>
+                                <Button
+                                    variant="outlined"
+                                    onClick={handleAddMedia}
+                                >
+                                    Add Media
+                                </Button>
+                                <Button
+                                    variant="outlined"
+                                    onClick={handleSubmit}
+                                >
+                                    Submit
+                                </Button>
+                            </div>
+                        </DialogActions>
+                    </Dialog>
+                </div>
+
+                <Button
+                    variant="outlined"
+                    onClick={handleClickOpenMovie}
+                >
+                    Add Movie
+                </Button>
+
+                    {/* Dialog form */}
+                    <div>
+                            <Dialog open={openMovie} onClose={handleClose} aria-labelledby="form-dialog-title">
+                                <DialogTitle id="form-dialog-title">Subscribe</DialogTitle>
+                                <DialogContent>
+                                <DialogContentText>
+                                {/* select date for entry */}
+                                <div>
+                                    <DatePicker
+                                        onChange={setNewMedia}
+                                        value={newMedia.date}
+                                        className="datePicker"
+                                    />
+                                </div>
+        
+                                {/* input fields for title, year, thoughts */}
+                                <div>    
+                                    <TextField
+                                        id="outlined-full-width"
+                                        label="title ..."
+                                        style={{ width: 250, margin: 8 }}
+                                        placeholder="enter title"
+                                        fullWidth
+                                        margin="normal"
+                                        InputLabelProps={{
+                                            shrink: true,
+                                        }}
+                                        type="text"
+                                        value={newMedia.title}
+                                        onChange={(event) => handleChange('title', event)}
+                                        variant="outlined"
+                                    />
+                                </div>
+                                <div>
+                                    <TextField
+                                        id="outlined-full-width"
+                                        label="year ..."
+                                        style={{ width: 250, margin: 8 }}
+                                        placeholder="enter year released"
+                                        fullWidth
+                                        margin="normal"
+                                        InputLabelProps={{
+                                            shrink: true,
+                                        }}
+                                        value={newMedia.year}
+                                        onChange={(event) => handleChange('year', event)}
+                                        variant="outlined"
+                                    />
+                                </div>
+                                <div>
+                                    <TextField
+                                        id="outlined-multiline-static"
+                                        label="thoughts ..."
+                                        multiline
+                                        rows={4}
+                                        style={{ width: 250, margin: 8 }}
+                                        defaultValue="Default Value"
+                                        value={newMedia.thoughts}
+                                        onChange={(event) => handleChange('thoughts', event)}
+                                        variant="outlined"
+                                    />
+                                </div>
+
+                                {/* Status of Media Dropdown */}
+                                <div>
+                                    <FormControl variant="outlined" className={classes.formControl}>
+                                        <InputLabel id="status-input">status ...</InputLabel>
+                                        <Select
+                                        labelId="status-input"
+                                        id="simple-select-outlined"
+                                        value={newMedia.status}
+                                        onChange={(event) => handleChange('status', event)}
+                                        label="status"
+                                        style={{ width: 250, margin: 8 }}
+                                        >
+                                        <MenuItem value="">
+                                            <em>None</em>
+                                        </MenuItem>
+                                        <MenuItem value={'Current'}>Current</MenuItem>
+                                        <MenuItem value={'Finished'}>Finished</MenuItem>
+                                        <MenuItem value={'Abandoned'}>Abandoned</MenuItem>
+                                        </Select>
+                                    </FormControl>
+                                </div>    
+                                </DialogContentText>
+                                </DialogContent>
+
+                                {/* buttons for cancel, add new media, submit */}
+                                <DialogActions>
+                                    <div>
+                                        <Button
+                                            variant="outlined"
+                                            onClick={sendJournal}
+                                        >
+                                            Cancel
+                                        </Button>
+                                        <Button
+                                            variant="outlined"
+                                            onClick={handleAddMedia}
+                                        >
+                                            Add Media
+                                        </Button>
+                                        <Button
+                                            variant="outlined"
+                                            onClick={handleSubmit}
+                                        >
+                                            Submit
+                                        </Button>
+                                    </div>
+                                </DialogActions>
+                            </Dialog>
+                        </div>
+
+                <Button
+                    variant="outlined"
+                    onClick={handleClickOpenTelevision}
+                >
+                    Add Television
+                </Button>
+
+                {/* Dialog form */}
+                <div>
+                            <Dialog open={openTelevision} onClose={handleClose} aria-labelledby="form-dialog-title">
+                                <DialogTitle id="form-dialog-title">Subscribe</DialogTitle>
+                                <DialogContent>
+                                <DialogContentText>
+                                {/* select date for entry */}
+                                <div>
+                                    <DatePicker
+                                        onChange={setNewMedia}
+                                        value={newMedia.date}
+                                        className="datePicker"
+                                    />
+                                </div>
+        
+                                {/* input fields for title, season, episode, thoughts */}
+                                <div>    
+                                    <TextField
+                                        id="outlined-full-width"
+                                        label="title ..."
+                                        style={{ width: 250, margin: 8 }}
+                                        placeholder="enter title"
+                                        fullWidth
+                                        margin="normal"
+                                        InputLabelProps={{
+                                            shrink: true,
+                                        }}
+                                        type="text"
+                                        value={newMedia.title}
+                                        onChange={(event) => handleChange('title', event)}
+                                        variant="outlined"
+                                    />
+                                </div>
+                                <div>
+                                    <TextField
+                                        id="outlined-full-width"
+                                        label="season ..."
+                                        style={{ width: 250, margin: 8 }}
+                                        placeholder="enter season number"
+                                        fullWidth
+                                        margin="normal"
+                                        InputLabelProps={{
+                                            shrink: true,
+                                        }}
+                                        value={newMedia.season}
+                                        onChange={(event) => handleChange('season', event)}
+                                        variant="outlined"
+                                    />
+                                </div>
+                                <div>
+                                    <TextField
+                                        id="outlined-full-width"
+                                        label="episode ..."
+                                        style={{ width: 250, margin: 8 }}
+                                        placeholder="enter episode number"
+                                        fullWidth
+                                        margin="normal"
+                                        InputLabelProps={{
+                                            shrink: true,
+                                        }}
+                                        value={newMedia.episode}
+                                        onChange={(event) => handleChange('episode', event)}
+                                        variant="outlined"
+                                    />
+                                </div>
+                                <div>
+                                    <TextField
+                                        id="outlined-multiline-static"
+                                        label="thoughts ..."
+                                        multiline
+                                        rows={4}
+                                        style={{ width: 250, margin: 8 }}
+                                        defaultValue="Default Value"
+                                        value={newMedia.thoughts}
+                                        onChange={(event) => handleChange('thoughts', event)}
+                                        variant="outlined"
+                                    />
+                                </div>
+                                <div>
+                                    <FormControl variant="outlined" className={classes.formControl}>
+                                        <InputLabel id="status-input">status ...</InputLabel>
+                                        <Select
+                                        labelId="status-input"
+                                        id="simple-select-outlined"
+                                        value={newMedia.status}
+                                        onChange={(event) => handleChange('status', event)}
+                                        label="status"
+                                        style={{ width: 250, margin: 8 }}
+                                        >
+                                        <MenuItem value="">
+                                            <em>None</em>
+                                        </MenuItem>
+                                        <MenuItem value={'Current'}>Current</MenuItem>
+                                        <MenuItem value={'Finished'}>Finished</MenuItem>
+                                        <MenuItem value={'Abandoned'}>Abandoned</MenuItem>
+                                        </Select>
+                                    </FormControl>
+                                </div>    
+                                </DialogContentText>
+                                </DialogContent>
+
+                                {/* buttons for cancel, add new media, submit */}
+                                <DialogActions>
+                                    <div>
+                                        <Button
+                                            variant="outlined"
+                                            onClick={sendJournal}
+                                        >
+                                            Cancel
+                                        </Button>
+                                        <Button
+                                            variant="outlined"
+                                            onClick={handleAddMedia}
+                                        >
+                                            Add Media
+                                        </Button>
+                                        <Button
+                                            variant="outlined"
+                                            onClick={handleSubmit}
+                                        >
+                                            Submit
+                                        </Button>
+                                    </div>
+                                </DialogActions>
+                            </Dialog>
+                        </div>
+                                        
+
+                <Button
+                    variant="outlined"
+                    onClick={handleClickOpenPodcast}
+                >
+                    Add Podcast
+                </Button>
+
+                <div>
+                            <Dialog open={openPodcast} onClose={handleClose} aria-labelledby="form-dialog-title">
+                                <DialogTitle id="form-dialog-title">Subscribe</DialogTitle>
+                                <DialogContent>
+                                <DialogContentText>
+                                {/* select date for entry */}
+                                <div>
+                                    <DatePicker
+                                        onChange={setNewMedia}
+                                        value={newMedia.date}
+                                        className="datePicker"
+                                    />
+                                </div>
+        
+                                {/* input fields for title, season, episode, thoughts */}
+                                <div>    
+                                    <TextField
+                                        id="outlined-full-width"
+                                        label="title ..."
+                                        style={{ width: 250, margin: 8 }}
+                                        placeholder="enter title"
+                                        fullWidth
+                                        margin="normal"
+                                        InputLabelProps={{
+                                            shrink: true,
+                                        }}
+                                        type="text"
+                                        value={newMedia.title}
+                                        onChange={(event) => handleChange('title', event)}
+                                        variant="outlined"
+                                    />
+                                </div>
+                                <div>
+                                    <TextField
+                                        id="outlined-full-width"
+                                        label="season ..."
+                                        style={{ width: 250, margin: 8 }}
+                                        placeholder="enter season number"
+                                        fullWidth
+                                        margin="normal"
+                                        InputLabelProps={{
+                                            shrink: true,
+                                        }}
+                                        value={newMedia.season}
+                                        onChange={(event) => handleChange('season', event)}
+                                        variant="outlined"
+                                    />
+                                </div>
+                                <div>
+                                    <TextField
+                                        id="outlined-full-width"
+                                        label="episode ..."
+                                        style={{ width: 250, margin: 8 }}
+                                        placeholder="enter episode number"
+                                        fullWidth
+                                        margin="normal"
+                                        InputLabelProps={{
+                                            shrink: true,
+                                        }}
+                                        value={newMedia.episode}
+                                        onChange={(event) => handleChange('episode', event)}
+                                        variant="outlined"
+                                    />
+                                </div>
+                                <div>
+                                    <TextField
+                                        id="outlined-multiline-static"
+                                        label="thoughts ..."
+                                        multiline
+                                        rows={4}
+                                        style={{ width: 250, margin: 8 }}
+                                        defaultValue="Default Value"
+                                        value={newMedia.thoughts}
+                                        onChange={(event) => handleChange('thoughts', event)}
+                                        variant="outlined"
+                                    />
+                                </div>
+                                <div>
+                                    <FormControl variant="outlined" className={classes.formControl}>
+                                        <InputLabel id="status-input">status ...</InputLabel>
+                                        <Select
+                                        labelId="status-input"
+                                        id="simple-select-outlined"
+                                        value={newMedia.status}
+                                        onChange={(event) => handleChange('status', event)}
+                                        label="status"
+                                        style={{ width: 250, margin: 8 }}
+                                        >
+                                        <MenuItem value="">
+                                            <em>None</em>
+                                        </MenuItem>
+                                        <MenuItem value={'Current'}>Current</MenuItem>
+                                        <MenuItem value={'Finished'}>Finished</MenuItem>
+                                        <MenuItem value={'Abandoned'}>Abandoned</MenuItem>
+                                        </Select>
+                                    </FormControl>
+                                </div>    
+                                </DialogContentText>
+                                </DialogContent>
+
+                                {/* buttons for cancel, add new media, submit */}
+                                <DialogActions>
+                                    <div>
+                                        <Button
+                                            variant="outlined"
+                                            onClick={sendJournal}
+                                        >
+                                            Cancel
+                                        </Button>
+                                        <Button
+                                            variant="outlined"
+                                            onClick={handleAddMedia}
+                                        >
+                                            Add Media
+                                        </Button>
+                                        <Button
+                                            variant="outlined"
+                                            onClick={handleSubmit}
+                                        >
+                                            Submit
+                                        </Button>
+                                    </div>
+                                </DialogActions>
+                            </Dialog>
+                        </div>
             </div>
+
+            
             {/* select media type */}
             <div>
                 <FormControl variant="outlined" className={classes.formControl}>
@@ -169,107 +770,19 @@ function AddEntry() {
                     labelId="type-input"
                     id="simple-select-outlined"
                     value={newMedia.media_type_id}
-                    onChange={(event) => handleChange('type', event)}
+                    onChange={(event) => handleChange('media_type_id', event)}
                     label="type"
                     style={{ width: 250, margin: 8 }}
                     >
                     <MenuItem value="">
                         <em>None</em>
                     </MenuItem>
-                    <MenuItem value={1}>Book</MenuItem>
-                    <MenuItem value={2}>Movie</MenuItem>
-                    <MenuItem value={3}>Television</MenuItem>
-                    <MenuItem value={4}>Podcast</MenuItem>
+                    <MenuItem value={1} >Book</MenuItem>
                     </Select>
                 </FormControl>
             </div>
 
-            <div>
-                <TextField
-                    id="outlined-full-width"
-                    label="title ..."
-                    style={{ width: 250, margin: 8 }}
-                    placeholder="enter title"
-                    fullWidth
-                    margin="normal"
-                    InputLabelProps={{
-                        shrink: true,
-                    }}
-                    type="text"
-                    value={newMedia.title}
-                    onChange={(event) => handleChange('title', event)}
-                    variant="outlined"
-                />
-            </div>
-            <div>
-                <TextField
-                    id="outlined-full-width"
-                    label="author ..."
-                    style={{ width: 250, margin: 8 }}
-                    placeholder="enter author"
-                    fullWidth
-                    margin="normal"
-                    InputLabelProps={{
-                        shrink: true,
-                    }}
-                    value={newMedia.author}
-                    onChange={(event) => handleChange('author', event)}
-                    variant="outlined"
-                />
-            </div>
-            <div>
-                <TextField
-                    id="outlined-multiline-static"
-                    label="thoughts ..."
-                    multiline
-                    rows={4}
-                    style={{ width: 250, margin: 8 }}
-                    defaultValue="Default Value"
-                    value={newMedia.thoughts}
-                    onChange={(event) => handleChange('thoughts', event)}
-                    variant="outlined"
-                />
-            </div>
-            <div>
-                <FormControl variant="outlined" className={classes.formControl}>
-                    <InputLabel id="status-input">status ...</InputLabel>
-                    <Select
-                    labelId="status-input"
-                    id="simple-select-outlined"
-                    value={newMedia.status}
-                    onChange={(event) => handleChange('status', event)}
-                    label="status"
-                    style={{ width: 250, margin: 8 }}
-                    >
-                    <MenuItem value="">
-                        <em>None</em>
-                    </MenuItem>
-                    <MenuItem value={'Current'}>Current</MenuItem>
-                    <MenuItem value={'Finished'}>Finished</MenuItem>
-                    <MenuItem value={'Abandoned'}>Abandoned</MenuItem>
-                    </Select>
-                </FormControl>
-                <div>
-                    <Button
-                        variant="outlined"
-                        onClick={sendJournal}
-                    >
-                        Cancel
-                    </Button>
-                    <Button
-                        variant="outlined"
-                        onClick={handleAddMedia}
-                    >
-                        Add Media
-                    </Button>
-                    <Button
-                        variant="outlined"
-                        onClick={handleSubmit}
-                    >
-                        Submit
-                    </Button>
-                </div>
-            </div>
+            
         </div>
 
     )
