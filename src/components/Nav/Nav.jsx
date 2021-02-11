@@ -35,6 +35,10 @@ function Nav() {
               Dashboard
             </Link>
 
+            <Link className="navLink" to="/booklist">
+              Book List
+            </Link>
+
             <Link className="navLink" to="/journal">
               Journal
             </Link>

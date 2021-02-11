@@ -22,7 +22,7 @@ router.get('/', (req, res) => {
 router.post('/', (req, res) => {
     console.log(req.body);
     const insertMediaQuery = `
-    INSERT INTO "media" ("media_type_id", "title", "author", "thoughts", "date", "status", "year", "season", "episode")
+    INSERT INTO "media" ("media_type_id", "title_book", "author", "thoughts_book", "date", "status_book", "year", "season", "episode")
     VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9);`;
 
     pool.query(insertMediaQuery, [req.body.media_type_id, 
