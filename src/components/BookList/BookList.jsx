@@ -60,15 +60,15 @@ function BookList() {
                     elevation={4}
                     style= {{ width: 400, margin: 8 }}
                     align="center"
-                    item key={media.id}
+                    key={media.id}
                     >
-                    <ul>
-                        {media.map(media => {
+                    
+                        {media.map(book => {
                             return (
-                                <li>{media.title_book} by {media.author} </li>
+                                <Typography variant="body2">{book.title_book} by {book.author} </Typography>
                             )
                         })}
-                    </ul>
+                    
                     <div>
                         <Button onClick={handleReturn}>Dashboard</Button>
                     </div>
@@ -76,7 +76,7 @@ function BookList() {
                         <Button onClick={handleJournal}>Journal</Button>
                     </div>
                 </Paper>
-                
+
             </div>
         </main>
 

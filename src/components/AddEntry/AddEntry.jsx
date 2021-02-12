@@ -1,6 +1,7 @@
 import React from 'react';
 import { useState, useEffect } from 'react';
-import { Grid, TextField, makeStyles, InputLabel, MenuItem, FormHelperText, FormControl, Select, Button } from '@material-ui/core';
+import { useDispatch, useSelector } from 'react-redux';
+import { Grid, TextField, makeStyles, InputLabel, MenuItem, FormHelperText, FormControl, FormControlLabel, Checkbox, CheckBoxOutlineBlankIcon, CheckBoxIcon, Select, Button } from '@material-ui/core';
 import Dialog from '@material-ui/core/Dialog';
 import DialogActions from '@material-ui/core/DialogActions';
 import DialogContent from '@material-ui/core/DialogContent';
@@ -60,17 +61,25 @@ function AddEntry() {
 
 
     const classes = useStyles();
-
-    const history = useHistory();
-
     
-
-    const [newMedia, setNewMedia] = React.useState({
-        media_type_id: '',
+    const history = useHistory();
+    const dispatch = useDispatch();
+    
+    const [newBook, setNewBook] = React.useState({
+        media_type_id: 1,
         title_book: '',
         author: '',
         thoughts_book: '',
         status_book: '',
+        date: ''
+    })
+
+    const [newMedia, setNewMedia] = React.useState({
+    //     media_type_id: '',
+    //     title_book: '',
+    //     author: '',
+    //     thoughts_book: '',
+    //     status_book: '',
         title_movie: '',
         year: '',
         thoughts_movie: '',
@@ -92,6 +101,59 @@ function AddEntry() {
 
 
     //function to update state from input fields
+    const handleChangeBook = (key, event) => {
+        console.log('in handleChangeBook')
+        switch(key){
+            case 'media_type_id':
+                setNewBook({...newBook, media_type_id: event.target.value})
+                break;
+            case 'title_book':
+                setNewBook({...newBook, title_book: event.target.value})
+                break;
+            case 'author':
+                setNewBook({...newBook, author: event.target.value})
+                break;
+            case 'thoughts_book':
+                setNewBook({...newBook, thoughts_book: event.target.value})
+                break;
+            case 'status_book':
+                setNewBook({...newBook, status_book: event.target.value})
+                break;
+            case 'date':
+                setNewBook({...newBook, date: event.target.value})
+                break;
+        }
+    }; //end handleChangeBook
+
+    //function to submit books
+    const handleSubmitBook = (event) => {
+        console.log('clicked handleSubmit');
+
+        //event.preventDefault();
+
+        //setting date
+        // setDate(date);
+
+        //dispatch here:
+        dispatch({
+            type: 'ADD_MEDIA',
+            payload: newBook
+        });
+
+        //adding new media item
+        setNewBook({
+            media_type_id: '',
+            title_book: '',
+            author: '',
+            thoughts_book: '',
+            status_book: '',
+            date: ''
+        });
+
+        history.push('/journal')
+
+    }; //end handleSubmit
+
     const handleChange = (key, event) => {
         console.log('in handleChange')
 
@@ -158,6 +220,8 @@ function AddEntry() {
                 break;
         }
     }; //end handleChange
+
+
 
 
     //CLICK FUNCTIONS:
@@ -262,15 +326,59 @@ function AddEntry() {
                 {/* Dialog Form */}
                 <div>
                     <Dialog open={openBook} onClose={handleClose} aria-labelledby="form-dialog-title">
-                        <DialogTitle id="form-dialog-title">Subscribe</DialogTitle>
+                        <DialogTitle id="form-dialog-title">Add A Book!</DialogTitle>
                         <DialogContent>
                         <DialogContentText>
                         {/* select date for entry */}
-                        <div>
+                        {/* <div>
                             <DatePicker
                                 onChange={setNewMedia}
                                 value={newMedia.date}
                                 className="datePicker"
+                            />
+                        </div> */}
+                        {/* <div>
+                            <FormControlLabel 
+                            control={<Checkbox name="addBook" />} 
+                            label="I'm Adding a Book"
+                            value={newMedia.media_type_id}
+                            onChange={(event) => handleChange('media_type_id', event)}
+                            style={{ margin: 8 }}
+                            />
+                        </div> */}
+                        {/* <div>
+                            <FormControl variant="outlined" className={classes.formControl}>
+                                <InputLabel id="type-input">media type ...</InputLabel>
+                                <Select
+                                labelId="type-input"
+                                id="simple-select-outlined"
+                                value={newMedia.media_type_id}
+                                onChange={(event) => handleChange('media_type_id', event)}
+                                label="type"
+                                style={{ width: 250, margin: 8 }}
+                                >
+                                <MenuItem value={1}>
+                                    <em>Please Select Media</em>
+                                </MenuItem>
+                                <MenuItem value={1} >Book</MenuItem>
+                                </Select>
+                            </FormControl>
+                        </div> */}
+
+                        <div>    
+                            <TextField
+                                id="outlined-full-width"
+                                label="date ..."
+                                style={{ width: 250, margin: 8 }}
+                                fullWidth
+                                margin="normal"
+                                InputLabelProps={{
+                                    shrink: true,
+                                }}
+                                type="date"
+                                value={newBook.date}
+                                onChange={(event) => handleChangeBook('date', event)}
+                                variant="outlined"
                             />
                         </div>
 
@@ -287,8 +395,8 @@ function AddEntry() {
                                     shrink: true,
                                 }}
                                 type="text"
-                                value={newMedia.title}
-                                onChange={(event) => handleChange('title', event)}
+                                value={newBook.title_book}
+                                onChange={(event) => handleChangeBook('title_book', event)}
                                 variant="outlined"
                             />
                         </div>
@@ -303,8 +411,8 @@ function AddEntry() {
                                 InputLabelProps={{
                                     shrink: true,
                                 }}
-                                value={newMedia.author}
-                                onChange={(event) => handleChange('author', event)}
+                                value={newBook.author}
+                                onChange={(event) => handleChangeBook('author', event)}
                                 variant="outlined"
                             />
                         </div>
@@ -312,12 +420,15 @@ function AddEntry() {
                             <TextField
                                 id="outlined-multiline-static"
                                 label="thoughts ..."
+                                placeholder="enter thoughts"
                                 multiline
                                 rows={4}
                                 style={{ width: 250, margin: 8 }}
-                                defaultValue="Default Value"
-                                value={newMedia.thoughts}
-                                onChange={(event) => handleChange('thoughts', event)}
+                                InputLabelProps={{
+                                    shrink: true,
+                                }}
+                                value={newBook.thoughts}
+                                onChange={(event) => handleChangeBook('thoughts_book', event)}
                                 variant="outlined"
                             />
                         </div>
@@ -329,8 +440,8 @@ function AddEntry() {
                                 <Select
                                 labelId="status-input"
                                 id="simple-select-outlined"
-                                value={newMedia.status}
-                                onChange={(event) => handleChange('status', event)}
+                                value={newBook.status_book}
+                                onChange={(event) => handleChangeBook('status_book', event)}
                                 label="status"
                                 style={{ width: 250, margin: 8 }}
                                 >
@@ -355,15 +466,15 @@ function AddEntry() {
                                 >
                                     Cancel
                                 </Button>
-                                <Button
+                                {/* <Button
                                     variant="outlined"
                                     onClick={handleAddMedia}
                                 >
                                     Add Media
-                                </Button>
+                                </Button> */}
                                 <Button
                                     variant="outlined"
-                                    onClick={handleSubmit}
+                                    onClick={handleSubmitBook}
                                 >
                                     Submit
                                 </Button>
@@ -371,7 +482,7 @@ function AddEntry() {
                         </DialogActions>
                     </Dialog>
                 </div>
-
+{/* ------------------------------------------------------------------------------------------------------------------- */}
                 <Button
                     variant="outlined"
                     onClick={handleClickOpenMovie}
@@ -435,7 +546,6 @@ function AddEntry() {
                                         multiline
                                         rows={4}
                                         style={{ width: 250, margin: 8 }}
-                                        defaultValue="Default Value"
                                         value={newMedia.thoughts}
                                         onChange={(event) => handleChange('thoughts', event)}
                                         variant="outlined"
@@ -571,7 +681,6 @@ function AddEntry() {
                                         multiline
                                         rows={4}
                                         style={{ width: 250, margin: 8 }}
-                                        defaultValue="Default Value"
                                         value={newMedia.thoughts}
                                         onChange={(event) => handleChange('thoughts', event)}
                                         variant="outlined"
@@ -705,7 +814,6 @@ function AddEntry() {
                                         multiline
                                         rows={4}
                                         style={{ width: 250, margin: 8 }}
-                                        defaultValue="Default Value"
                                         value={newMedia.thoughts}
                                         onChange={(event) => handleChange('thoughts', event)}
                                         variant="outlined"
@@ -763,24 +871,7 @@ function AddEntry() {
 
             
             {/* select media type */}
-            <div>
-                <FormControl variant="outlined" className={classes.formControl}>
-                    <InputLabel id="type-input">media type ...</InputLabel>
-                    <Select
-                    labelId="type-input"
-                    id="simple-select-outlined"
-                    value={newMedia.media_type_id}
-                    onChange={(event) => handleChange('media_type_id', event)}
-                    label="type"
-                    style={{ width: 250, margin: 8 }}
-                    >
-                    <MenuItem value="">
-                        <em>None</em>
-                    </MenuItem>
-                    <MenuItem value={1} >Book</MenuItem>
-                    </Select>
-                </FormControl>
-            </div>
+            
 
             
         </div>

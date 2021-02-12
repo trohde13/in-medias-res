@@ -7,7 +7,7 @@ function* fetchMedia() {
     try {
         const media = yield axios.get('/api/media');
         console.log('get all:', media.data);
-        yield put({ type: 'SET_MOVIES', payload: media.data });
+        yield put({ type: 'SET_MEDIA', payload: media.data });
     } catch {
         console.error('ERROR in getting media', error)
     }
@@ -15,12 +15,12 @@ function* fetchMedia() {
 }; //end fetchMedia
 
 //generator function to POST media to database: will be fired on ADD_MEDIA
-function* addMedia() {
+function* addMedia(action) {
     try {
         console.log('post new media');
         const newMedia = action.payload;
         yield axios.post('/api/media', newMedia);
-        yield put({ payload: action.payload })
+        yield put({ type: 'FETCH_MEDIA' })
     } catch (error) {
         console.log('ERROR in adding new media', error)
     }
