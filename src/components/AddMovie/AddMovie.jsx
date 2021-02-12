@@ -41,7 +41,7 @@ const useStyles = makeStyles((theme) => ({
     },
   }));
 
-function AddMovie() {
+function AddMovie({openMovie, setOpenMovie}) {
     console.log('in AddMovie form')
 
     const classes = useStyles();

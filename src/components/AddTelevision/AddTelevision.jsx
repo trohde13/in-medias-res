@@ -41,7 +41,7 @@ const useStyles = makeStyles((theme) => ({
     },
   }));
 
-function AddTelevision() {
+function AddTelevision({openTelevision, setOpenTelevision}) {
   console.log('in AddTelevision form');
 
   const classes = useStyles();

@@ -41,7 +41,7 @@ const useStyles = makeStyles((theme) => ({
     },
   }));
 
-function AddPodcast() {
+function AddPodcast({openPodcast, setOpenPodcast}) {
   console.log('in AddPodcast form');
 
   const classes = useStyles();

@@ -40,7 +40,7 @@ const useStyles = makeStyles((theme) => ({
     },
   }));
 
-function AddBook() {
+function AddBook({openBook, setOpenBook}) {
     console.log('in AddBook form')
 
     const classes = useStyles();
@@ -95,7 +95,7 @@ function AddBook() {
 
         //dispatch here:
         dispatch({
-            type: 'ADD_MEDIA',
+            type: 'ADD_BOOK',
             payload: newBook
         });
 

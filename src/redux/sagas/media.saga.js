@@ -14,22 +14,61 @@ function* fetchMedia() {
 
 }; //end fetchMedia
 
-//generator function to POST media to database: will be fired on ADD_MEDIA
-function* addMedia(action) {
+//generator function to POST books to database: will be fired on ADD_BOOK
+function* addBook(action) {
     try {
-        console.log('post new media');
-        const newMedia = action.payload;
-        yield axios.post('/api/media', newMedia);
+        console.log('post new book');
+        const newBook = action.payload;
+        yield axios.post('/api/book', newBook);
         yield put({ type: 'FETCH_MEDIA' })
     } catch (error) {
-        console.log('ERROR in adding new media', error)
+        console.log('ERROR in adding new book', error)
     }
-}; //end addMedia
+}; //end addBook
+
+//generator function to POST movies to database: will be fired on ADD_MOVIE
+function* addMovie(action) {
+    try {
+        console.log('post new movie');
+        const newMovie = action.payload;
+        yield axios.post('/api/movie', newMovie);
+        yield put({ type: 'FETCH_MEDIA' })
+    } catch (error) {
+        console.log('ERROR in adding new movie', error)
+    }
+}; //end addMovie
+
+//generator function to POST television to database: will be fired on ADD_TELEVISION
+function* addTelevision(action) {
+    try {
+        console.log('post new television');
+        const newTelevision = action.payload;
+        yield axios.post('/api/television', newTelevision);
+        yield put({ type: 'FETCH_MEDIA' })
+    } catch (error) {
+        console.log('ERROR in adding new television', error)
+    }
+}; //end addTelevision
+
+//generator function to POST podcasts to database: will be fired on ADD_PODCAST
+function* addPodcast(action) {
+    try {
+        console.log('post new podcast');
+        const newPodcast = action.payload;
+        yield axios.post('/api/podcast', newPodcast);
+        yield put({ type: 'FETCH_MEDIA' })
+    } catch (error) {
+        console.log('ERROR in adding new podcast', error)
+    }
+}; //end addPodcast
 
 
 function* mediaSaga() {
     yield takeEvery('FETCH_MEDIA', fetchMedia);
-    yield takeEvery('ADD_MEDIA', addMedia);
+    yield takeEvery('ADD_BOOK', addBook);
+    yield takeEvery('ADD_MOVIE', addMovie);
+    yield takeEvery('ADD_TELEVISION', addTelevision);
+    yield takeEvery('ADD_PODCAST', addPodcast);
   }
 
 export default mediaSaga;
