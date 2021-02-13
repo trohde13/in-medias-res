@@ -16,7 +16,18 @@ router.get('/', (req, res) => {
         })
 }); //end get for media
 
-
+//DELETE route to delete media item
+router.delete('/:id', (req, res) => {
+    const queryText = `DELETE FROM "media" WHERE id=$1;`;
+    pool.query(queryText, [req.params.id])
+        .then(() => {
+            res.sendStatus(200)
+        })
+        .catch((error) => {
+            console.log('ERROR in DELETE', error)
+            res.sendStatus(500);
+        })
+});
 
 
 

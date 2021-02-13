@@ -49,7 +49,10 @@ function AddTelevision({openTelevision, setOpenTelevision}) {
   const history = useHistory();
   const dispatch = useDispatch();
 
-
+//Close Dialog
+const handleClose = () => {
+    setOpenBook(false);
+  };
 
   const [newTelevision, setNewTelevision] = React.useState({
     media_type_id: 3,
@@ -113,7 +116,7 @@ function AddTelevision({openTelevision, setOpenTelevision}) {
 
     //dispatch here:
     dispatch({
-      type: 'ADD_MEDIA',
+      type: 'ADD_TELEVISION',
       payload: newTelevison,
     });
 
@@ -178,7 +181,7 @@ function AddTelevision({openTelevision, setOpenTelevision}) {
                 }}
                 type="text"
                 value={newTelevision.title}
-                onChange={(event) => handleChange('title', event)}
+                onChange={(event) => handleChange('title_television', event)}
                 variant="outlined"
               />
             </div>
@@ -194,7 +197,7 @@ function AddTelevision({openTelevision, setOpenTelevision}) {
                   shrink: true,
                 }}
                 value={newTelevision.season}
-                onChange={(event) => handleChange('season', event)}
+                onChange={(event) => handleChange('season_television', event)}
                 variant="outlined"
               />
             </div>
@@ -210,7 +213,7 @@ function AddTelevision({openTelevision, setOpenTelevision}) {
                   shrink: true,
                 }}
                 value={newTelevision.episode}
-                onChange={(event) => handleChange('episode', event)}
+                onChange={(event) => handleChange('episode_television', event)}
                 variant="outlined"
               />
             </div>
@@ -222,7 +225,7 @@ function AddTelevision({openTelevision, setOpenTelevision}) {
                 rows={4}
                 style={{ width: 250, margin: 8 }}
                 value={newTelevision.thoughts}
-                onChange={(event) => handleChange('thoughts', event)}
+                onChange={(event) => handleChange('thoughts_television', event)}
                 variant="outlined"
               />
             </div>
@@ -235,6 +238,7 @@ function AddTelevision({openTelevision, setOpenTelevision}) {
                   value={newTelevision.status}
                   onChange={(event) => handleChange('status', event)}
                   label="status"
+                  defaultValue="Current"
                   style={{ width: 250, margin: 8 }}
                 >
                   <MenuItem value="">

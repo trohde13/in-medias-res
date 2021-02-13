@@ -49,6 +49,10 @@ function AddMovie({openMovie, setOpenMovie}) {
     const history = useHistory();
     const dispatch = useDispatch();
   
+    //Close Dialog
+  const handleClose = () => {
+    setOpenBook(false);
+  };
   
   const [newMovie, setNewMovie] = React.useState({
     media_type_id: 2,
@@ -90,7 +94,7 @@ function AddMovie({openMovie, setOpenMovie}) {
 
     //dispatch here:
     dispatch({
-      type: 'ADD_MEDIA',
+      type: 'ADD_MOVIE',
       payload: newMovie,
     });
 
@@ -125,7 +129,7 @@ function AddMovie({openMovie, setOpenMovie}) {
             {/* select date for entry */}
             <div>
               <TextField
-                id="outlined-full-width"
+                id="movie-date"
                 label="date ..."
                 style={{ width: 250, margin: 8 }}
                 fullWidth
@@ -143,7 +147,7 @@ function AddMovie({openMovie, setOpenMovie}) {
             {/* input fields for title, year, thoughts */}
             <div>
               <TextField
-                id="outlined-full-width"
+                id="movie-title"
                 label="title ..."
                 style={{ width: 250, margin: 8 }}
                 placeholder="enter title"
@@ -154,13 +158,13 @@ function AddMovie({openMovie, setOpenMovie}) {
                 }}
                 type="text"
                 value={newMovie.title}
-                onChange={(event) => handleChange('title', event)}
+                onChange={(event) => handleChange('title_movie', event)}
                 variant="outlined"
               />
             </div>
             <div>
               <TextField
-                id="outlined-full-width"
+                id="movie-year"
                 label="year ..."
                 style={{ width: 250, margin: 8 }}
                 placeholder="enter year released"
@@ -176,13 +180,13 @@ function AddMovie({openMovie, setOpenMovie}) {
             </div>
             <div>
               <TextField
-                id="outlined-multiline-static"
+                id="movie-thoughts"
                 label="thoughts ..."
                 multiline
                 rows={4}
                 style={{ width: 250, margin: 8 }}
                 value={newMovie.thoughts}
-                onChange={(event) => handleChange('thoughts', event)}
+                onChange={(event) => handleChange('thoughts_movie', event)}
                 variant="outlined"
               />
             </div>
@@ -193,10 +197,11 @@ function AddMovie({openMovie, setOpenMovie}) {
                 <InputLabel id="status-input">status ...</InputLabel>
                 <Select
                   labelId="status-input"
-                  id="simple-select-outlined"
+                  id="movie-status"
                   value={newMovie.status}
-                  onChange={(event) => handleChange('status', event)}
+                  onChange={(event) => handleChange('status_movie', event)}
                   label="status"
+                  defaultValue="Current"
                   style={{ width: 250, margin: 8 }}
                 >
                   <MenuItem value="">

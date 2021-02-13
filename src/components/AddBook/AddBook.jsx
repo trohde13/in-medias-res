@@ -48,7 +48,10 @@ function AddBook({openBook, setOpenBook}) {
     const history = useHistory();
     const dispatch = useDispatch();
   
-  
+  //Close Dialog
+  const handleClose = () => {
+    setOpenBook(false);
+  };
 
     const [newBook, setNewBook] = React.useState({
         media_type_id: 1,
@@ -60,7 +63,7 @@ function AddBook({openBook, setOpenBook}) {
     })
 
      //function to update state from input fields
-     const handleChangeBook = (key, event) => {
+     const handleChange = (key, event) => {
         console.log('in handleChangeBook')
         switch(key){
             case 'media_type_id':
@@ -131,7 +134,7 @@ function AddBook({openBook, setOpenBook}) {
             {/* select date for entry */}
             <div>
               <TextField
-                id="outlined-full-width"
+                id="book-date"
                 label="date ..."
                 style={{ width: 250, margin: 8 }}
                 fullWidth
@@ -141,7 +144,7 @@ function AddBook({openBook, setOpenBook}) {
                 }}
                 type="date"
                 value={newBook.date}
-                onChange={(event) => handleChangeBook('date', event)}
+                onChange={(event) => handleChange('date', event)}
                 variant="outlined"
               />
             </div>
@@ -149,7 +152,7 @@ function AddBook({openBook, setOpenBook}) {
             {/* input fields for title, author, thoughts */}
             <div>
               <TextField
-                id="outlined-full-width"
+                id="book-title"
                 label="title ..."
                 style={{ width: 250, margin: 8 }}
                 placeholder="enter title"
@@ -160,13 +163,13 @@ function AddBook({openBook, setOpenBook}) {
                 }}
                 type="text"
                 value={newBook.title_book}
-                onChange={(event) => handleChangeBook('title_book', event)}
+                onChange={(event) => handleChange('title_book', event)}
                 variant="outlined"
               />
             </div>
             <div>
               <TextField
-                id="outlined-full-width"
+                id="book-author"
                 label="author ..."
                 style={{ width: 250, margin: 8 }}
                 placeholder="enter author"
@@ -176,13 +179,13 @@ function AddBook({openBook, setOpenBook}) {
                   shrink: true,
                 }}
                 value={newBook.author}
-                onChange={(event) => handleChangeBook('author', event)}
+                onChange={(event) => handleChange('author', event)}
                 variant="outlined"
               />
             </div>
             <div>
               <TextField
-                id="outlined-multiline-static"
+                id="book-thoughts"
                 label="thoughts ..."
                 placeholder="enter thoughts"
                 multiline
@@ -192,7 +195,7 @@ function AddBook({openBook, setOpenBook}) {
                   shrink: true,
                 }}
                 value={newBook.thoughts}
-                onChange={(event) => handleChangeBook('thoughts_book', event)}
+                onChange={(event) => handleChange('thoughts_book', event)}
                 variant="outlined"
               />
             </div>
@@ -203,10 +206,11 @@ function AddBook({openBook, setOpenBook}) {
                 <InputLabel id="status-input">status ...</InputLabel>
                 <Select
                   labelId="status-input"
-                  id="simple-select-outlined"
+                  id="book-status"
                   value={newBook.status_book}
-                  onChange={(event) => handleChangeBook('status_book', event)}
+                  onChange={(event) => handleChange('status_book', event)}
                   label="status"
+                  defaultValue="Current"
                   style={{ width: 250, margin: 8 }}
                 >
                   <MenuItem value="">
@@ -233,7 +237,7 @@ function AddBook({openBook, setOpenBook}) {
                                 >
                                     Add Media
                                 </Button> */}
-            <Button variant="outlined" onClick={handleSubmitBook}>
+            <Button variant="outlined" onClick={handleSubmit}>
               Submit
             </Button>
           </div>

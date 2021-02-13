@@ -26,7 +26,7 @@ import { useHistory } from 'react-router-dom';
 
 import AddBook from '../AddBook/AddBook';
 import AddMovie from '../AddMovie/AddMovie';
-import AddTelevsion from '../AddTelevision/AddTelevision';
+import AddTelevision from '../AddTelevision/AddTelevision';
 import AddPodcast from '../AddPodcast/AddPodcast';
 
 const useStyles = makeStyles((theme) => ({

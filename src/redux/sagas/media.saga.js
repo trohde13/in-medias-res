@@ -62,6 +62,17 @@ function* addPodcast(action) {
     }
 }; //end addPodcast
 
+//generator function to DELETE item: will be fired on 'DELETE_MEDIA'
+function* deleteMedia(action) {
+    try {
+        const mediaId = action.payload;
+        yield axios.delete(`/api/media/${mediaId}`);
+        yield put({ type: 'FETCH_MEDIA' });
+    } catch (error) {
+        console.log('error in deleting media', error)
+    }
+}
+
 
 function* mediaSaga() {
     yield takeEvery('FETCH_MEDIA', fetchMedia);
@@ -69,6 +80,7 @@ function* mediaSaga() {
     yield takeEvery('ADD_MOVIE', addMovie);
     yield takeEvery('ADD_TELEVISION', addTelevision);
     yield takeEvery('ADD_PODCAST', addPodcast);
+    yield takeEvery('DELETE_MEDIA', deleteMedia);
   }
 
 export default mediaSaga;

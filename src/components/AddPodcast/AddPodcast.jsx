@@ -49,7 +49,10 @@ function AddPodcast({openPodcast, setOpenPodcast}) {
   const history = useHistory();
   const dispatch = useDispatch();
 
-
+  //Close Dialog
+  const handleClose = () => {
+    setOpenBook(false);
+  };
 
   const [newPodcast, setNewPodcast] = React.useState({
     media_type_id: 4,
@@ -97,7 +100,7 @@ function AddPodcast({openPodcast, setOpenPodcast}) {
 
     //dispatch here:
     dispatch({
-      type: 'ADD_MEDIA',
+      type: 'ADD_PODCAST',
       payload: newPodcast,
     });
 
@@ -162,7 +165,7 @@ function AddPodcast({openPodcast, setOpenPodcast}) {
                 }}
                 type="text"
                 value={newPodcast.title}
-                onChange={(event) => handleChange('title', event)}
+                onChange={(event) => handleChange('title_podcast', event)}
                 variant="outlined"
               />
             </div>
@@ -178,7 +181,7 @@ function AddPodcast({openPodcast, setOpenPodcast}) {
                   shrink: true,
                 }}
                 value={newPodcast.season}
-                onChange={(event) => handleChange('season', event)}
+                onChange={(event) => handleChange('season_podcast', event)}
                 variant="outlined"
               />
             </div>
@@ -194,7 +197,7 @@ function AddPodcast({openPodcast, setOpenPodcast}) {
                   shrink: true,
                 }}
                 value={newPodcast.episode}
-                onChange={(event) => handleChange('episode', event)}
+                onChange={(event) => handleChange('episode_podcast', event)}
                 variant="outlined"
               />
             </div>
@@ -206,7 +209,7 @@ function AddPodcast({openPodcast, setOpenPodcast}) {
                 rows={4}
                 style={{ width: 250, margin: 8 }}
                 value={newPodcast.thoughts}
-                onChange={(event) => handleChange('thoughts', event)}
+                onChange={(event) => handleChange('thoughts-podcast', event)}
                 variant="outlined"
               />
             </div>
@@ -219,6 +222,7 @@ function AddPodcast({openPodcast, setOpenPodcast}) {
                   value={newPodcast.status}
                   onChange={(event) => handleChange('status', event)}
                   label="status"
+                  defaultValue="Current"
                   style={{ width: 250, margin: 8 }}
                 >
                   <MenuItem value="">
