@@ -7,6 +7,14 @@ body,
 body {
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   margin: 0px;
+
+  background: black;
+  background-image: url("notebook-coffee1.jpeg");
+  background-repeat: no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+  background-size: cover;
 }
 
 img {

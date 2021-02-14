@@ -48,7 +48,7 @@ function JournalItem({ dateArrayIds }) {
     dispatch({ type: 'DELETE_MEDIA', payload: media.id });
   };
 
-  console.log(media[0]);
+  
 
   return (
     <Card variant="outlined" elevation={4}>

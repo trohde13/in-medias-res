@@ -31,7 +31,6 @@ router.get('/datearray', (req, res) => {
         ORDER BY "date" DESC;`
     pool.query(queryText, [req.user.id])
         .then( result => {
-            console.log(result.rows)
             res.send(result.rows);
         })
         .catch( error => {

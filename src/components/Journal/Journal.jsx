@@ -21,7 +21,7 @@ import JournalItem from '../JournalItem/JournalItem';
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    width: '75%',
+    width: '100%',
   },
   heading: {
     fontSize: theme.typography.pxToRem(15),
@@ -41,18 +41,32 @@ function Journal() {
   }, []);
 
 
-  console.log('dateArrayIds', dateArrayIds)
+  
   return (
     <main>
-      <h2>Welcome to your Journal</h2>
+      
 
-      <Grid container spacing={4} justify="center">
+      <Grid 
+        container
+        direction="column"
+        justify="center"
+        alignItems="stretch"
+        spacing={2} 
+        xs={12} sm={6}
+      >
+        <Grid item xs={12}>
+          <Typography variant="h4">Welcome to your Journal</Typography>
+        </Grid> 
+        <Grid item xs={6} sm={3}>
+        </Grid>         
           {/* first map for date ids */}
         {dateArrayIds.map((media, i) => {
           return (
-            <Grid item key={i}>
-              <Accordion>
-                 
+            <Grid
+                
+                item key={i}
+            >
+              <Accordion> 
                 <AccordionSummary
                   expandIcon={<ExpandMoreIcon />}
                   aria-controls="panel1a-content"
@@ -62,7 +76,6 @@ function Journal() {
                     {media.date}
                   </Typography>
                 </AccordionSummary>
-
                 <AccordionDetails>
                   <JournalItem dateArrayIds={media.dateIDs} />
                 </AccordionDetails>
@@ -71,6 +84,8 @@ function Journal() {
           );
         })}
       </Grid>
+      <Grid item xs={6} sm={3}>
+        </Grid>
     </main>
   );
 } //end journal
