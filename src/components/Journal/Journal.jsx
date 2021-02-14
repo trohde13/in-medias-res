@@ -37,7 +37,7 @@ function Journal() {
   const dateArrayIds = useSelector((store) => store.date);
 
   useEffect(() => {
-    dispatch({ type: 'FETCH_MEDIA' });
+    dispatch({ type: 'FETCH_DATE' });
   }, []);
 
 
