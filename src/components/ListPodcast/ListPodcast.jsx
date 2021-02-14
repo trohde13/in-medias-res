@@ -26,12 +26,12 @@ const useStyles = makeStyles((theme) => ({
 function ListPodcast) {
   const history = useHistory();
   const dispatch = useDispatch();
-  const media = useSelector((store) => store.media);
+  const media = useSelector((store) => store.podcast);
   const classes = useStyles();
 
   //getting the book info on page load
   useEffect(() => {
-    dispatch({ type: 'FETCH_MEDIA' });
+    dispatch({ type: 'FETCH_POD' });
   }, []);
 
   const handleReturn = () => {
@@ -53,7 +53,7 @@ function ListPodcast) {
           align="center"
           key={media.id}
         >
-          {media.map((television) => {
+          {media.map((podcasat) => {
             return (
               <Typography variant="body2">
                 {podcast.title} -- {podcast.season} . {podcast.episode} {' '}

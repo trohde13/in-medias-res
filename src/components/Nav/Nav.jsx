@@ -35,7 +35,7 @@ function Nav() {
               Dashboard
             </Link>
 
-            <Link className="navLink" to="/booklist">
+            <Link className="navLink" to="/listbook">
               Book List
             </Link>
 

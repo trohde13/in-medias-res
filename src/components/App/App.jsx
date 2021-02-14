@@ -95,6 +95,30 @@ function App() {
           </ProtectedRoute>
 
           <ProtectedRoute
+            // logged in shows Dashboard else shows LoginPage
+            exact
+            path="/listmovie"
+          >
+            <ListMovie />
+          </ProtectedRoute>
+
+          <ProtectedRoute
+            // logged in shows Dashboard else shows LoginPage
+            exact
+            path="/listtelevision"
+          >
+            <ListTelevision />
+          </ProtectedRoute>
+
+          <ProtectedRoute
+            // logged in shows Dashboard else shows LoginPage
+            exact
+            path="/listpodcast"
+          >
+            <ListPodcast />
+          </ProtectedRoute>
+
+          <ProtectedRoute
             // logged in shows InfoPage else shows LoginPage
             exact
             path="/info"

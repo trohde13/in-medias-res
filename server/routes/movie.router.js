@@ -6,7 +6,22 @@ const pool = require('../modules/pool')
 
 
 //GET route to get finished title/ year for ListMovie
+router.get('/', (req, res) => {
 
+    const queryText = `
+        SELECT "title", "year"
+        FROM "media"
+        WHERE "media_type_id" = 2 AND "status" = 'finished' AND "user_id" = $1
+        ORDER BY "date" DESC;`;
+    pool.query(queryText, [req.user.id])
+        .then( result => {
+            res.send(result.rows);
+        })
+        .catch( error => {
+            console.log('ERROR getting books', error);
+            res.sendStatus(500);
+        })
+}); //end get for movies
 
 
 

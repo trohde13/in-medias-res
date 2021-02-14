@@ -14,53 +14,18 @@ function* fetchMedia() {
 
 }; //end fetchMedia
 
-//generator function to POST books to database: will be fired on ADD_BOOK
-function* addBook(action) {
+//generator function to GET date array from database: will be fired on FETCH_DATE
+function* fetchDate() {
     try {
-        console.log('post new book');
-        const newBook = action.payload;
-        yield axios.post('/api/book', newBook);
-        yield put({ type: 'FETCH_MEDIA' })
-    } catch (error) {
-        console.log('ERROR in adding new book', error)
+        const date = yield axios.get('/api/media/datearray');
+        console.log('get all:', date.data);
+        yield put({ type: 'SET_DATE', payload: date.data });
+    } catch {
+        console.error('ERROR in getting date array', error)
     }
-}; //end addBook
 
-//generator function to POST movies to database: will be fired on ADD_MOVIE
-function* addMovie(action) {
-    try {
-        console.log('post new movie');
-        const newMovie = action.payload;
-        yield axios.post('/api/movie', newMovie);
-        yield put({ type: 'FETCH_MEDIA' })
-    } catch (error) {
-        console.log('ERROR in adding new movie', error)
-    }
-}; //end addMovie
+}; //end fetchDate
 
-//generator function to POST television to database: will be fired on ADD_TELEVISION
-function* addTelevision(action) {
-    try {
-        console.log('post new television');
-        const newTelevision = action.payload;
-        yield axios.post('/api/television', newTelevision);
-        yield put({ type: 'FETCH_MEDIA' })
-    } catch (error) {
-        console.log('ERROR in adding new television', error)
-    }
-}; //end addTelevision
-
-//generator function to POST podcasts to database: will be fired on ADD_PODCAST
-function* addPodcast(action) {
-    try {
-        console.log('post new podcast');
-        const newPodcast = action.payload;
-        yield axios.post('/api/podcast', newPodcast);
-        yield put({ type: 'FETCH_MEDIA' })
-    } catch (error) {
-        console.log('ERROR in adding new podcast', error)
-    }
-}; //end addPodcast
 
 //generator function to DELETE item: will be fired on 'DELETE_MEDIA'
 function* deleteMedia(action) {
@@ -76,10 +41,7 @@ function* deleteMedia(action) {
 
 function* mediaSaga() {
     yield takeEvery('FETCH_MEDIA', fetchMedia);
-    yield takeEvery('ADD_BOOK', addBook);
-    yield takeEvery('ADD_MOVIE', addMovie);
-    yield takeEvery('ADD_TELEVISION', addTelevision);
-    yield takeEvery('ADD_PODCAST', addPodcast);
+    yield takeEvery('FETCH_DATE', fetchDate);
     yield takeEvery('DELETE_MEDIA', deleteMedia);
   }
 

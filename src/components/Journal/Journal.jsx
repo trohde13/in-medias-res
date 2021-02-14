@@ -34,16 +34,13 @@ function Journal() {
 
   const dispatch = useDispatch();
   //useSelector to get media from reducer
-  const journal = useSelector((store) => store.media);
+  const dateArrayIds = useSelector((store) => store.date);
 
   useEffect(() => {
     dispatch({ type: 'FETCH_MEDIA' });
   }, []);
 
-  const handleDelete = () => {
-    console.log('clicked handleDelete');
-    dispatch({ type: 'DELETE_MEDIA', payload: entry.id });
-  };
+
 
   return (
     <main>
@@ -51,7 +48,7 @@ function Journal() {
 
       <Grid container spacing={4} justify="center">
           {/* first map for date ids */}
-        {journal.map((media) => {
+        {dateArrayIds.map((media) => {
           return (
             <Grid item key={media.id}>
               <Accordion>

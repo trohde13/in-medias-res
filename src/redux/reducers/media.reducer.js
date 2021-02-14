@@ -1,3 +1,5 @@
+
+//reducer to do general media GET
 const mediaReducer = (state = [], action) => {
     switch (action.type) {
         case 'SET_MEDIA':
@@ -6,6 +8,8 @@ const mediaReducer = (state = [], action) => {
             return state;
     }
 }; //end mediaReducer
+
+
 
 
 export default mediaReducer;

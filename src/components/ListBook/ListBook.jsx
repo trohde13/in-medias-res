@@ -26,12 +26,12 @@ const useStyles = makeStyles((theme) => ({
 function ListBook() {
   const history = useHistory();
   const dispatch = useDispatch();
-  const media = useSelector((store) => store.media);
+  const media = useSelector((store) => store.book);
   const classes = useStyles();
 
   //getting the book info on page load
   useEffect(() => {
-    dispatch({ type: 'FETCH_MEDIA' });
+    dispatch({ type: 'FETCH_BOOK' });
   }, []);
 
   const handleReturn = () => {
