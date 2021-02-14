@@ -47,6 +47,8 @@ function AddBook({openBook, setOpenBook}) {
 
     const history = useHistory();
     const dispatch = useDispatch();
+
+    const user = useSelector((store) => store.user);
   
   //Close Dialog
   const handleClose = () => {
@@ -59,7 +61,8 @@ function AddBook({openBook, setOpenBook}) {
         author: '',
         thoughts: '',
         status: '',
-        date: ''
+        date: '',
+        user_id: ''
     })
 
      //function to update state from input fields
@@ -109,7 +112,8 @@ function AddBook({openBook, setOpenBook}) {
             author: '',
             thoughts: '',
             status: '',
-            date: ''
+            date: '',
+            user_id: '',
         });
 
         history.push('/journal')

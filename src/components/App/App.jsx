@@ -23,6 +23,9 @@ import AddEntry from '../AddEntry/AddEntry';
 import Dashboard from '../Dashboard/Dashboard';
 import Journal from '../Journal/Journal';
 import ListBook from '../ListBook/ListBook';
+import ListMovie from '../ListMovie/ListMovie';
+import ListTelevision from '../ListTelevision/ListTelevision';
+import ListPodcast from '../ListPodcast/ListPodcast';
 
 import './App.css';
 

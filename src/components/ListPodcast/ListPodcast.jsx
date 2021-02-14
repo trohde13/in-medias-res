@@ -23,7 +23,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-function ListPodcast) {
+function ListPodcast() {
   const history = useHistory();
   const dispatch = useDispatch();
   const media = useSelector((store) => store.podcast);

@@ -41,16 +41,16 @@ function Journal() {
   }, []);
 
 
-
+  console.log('dateArrayIds', dateArrayIds)
   return (
     <main>
       <h2>Welcome to your Journal</h2>
 
       <Grid container spacing={4} justify="center">
           {/* first map for date ids */}
-        {dateArrayIds.map((media) => {
+        {dateArrayIds.map((media, i) => {
           return (
-            <Grid item key={media.id}>
+            <Grid item key={i}>
               <Accordion>
                  
                 <AccordionSummary
@@ -64,7 +64,7 @@ function Journal() {
                 </AccordionSummary>
 
                 <AccordionDetails>
-                  <JournalItem media={media} />
+                  <JournalItem dateArrayIds={media.dateIDs} />
                 </AccordionDetails>
               </Accordion>
             </Grid>
