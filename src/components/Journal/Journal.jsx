@@ -1,9 +1,9 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-
+import moment from 'moment';
 import { makeStyles } from '@material-ui/core/styles';
 import {
-    Grid,
+  Grid,
   Button,
   Paper,
   Accordion,
@@ -42,7 +42,7 @@ function Journal() {
 
   const handleDelete = () => {
     console.log('clicked handleDelete');
-    dispatch({ type: 'DELETE_MEDIA', payload: entry.id })
+    dispatch({ type: 'DELETE_MEDIA', payload: entry.id });
   };
 
   return (
@@ -50,17 +50,30 @@ function Journal() {
       <h2>Welcome to your Journal</h2>
 
       <Grid container spacing={4} justify="center">
-      {journal.map((media) => {
-        return (
-          <Grid item key={media.id}>
-              <Typography variant="subtitle1" className={classes.heading}>
+          {/* first map for date ids */}
+        {journal.map((media) => {
+          return (
+            <Grid item key={media.id}>
+              <Accordion>
+                 
+                <AccordionSummary
+                  expandIcon={<ExpandMoreIcon />}
+                  aria-controls="panel1a-content"
+                  id="panel1a-header"
+                >
+                  <Typography variant="subtitle1" className={classes.heading}>
                     {media.date}
                   </Typography>
-            <JournalItem media={media} />
-          </Grid>
-        );
-      })}
-    </Grid>
+                </AccordionSummary>
+
+                <AccordionDetails>
+                  <JournalItem media={media} />
+                </AccordionDetails>
+              </Accordion>
+            </Grid>
+          );
+        })}
+      </Grid>
     </main>
   );
 } //end journal

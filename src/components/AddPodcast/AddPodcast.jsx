@@ -51,16 +51,16 @@ function AddPodcast({openPodcast, setOpenPodcast}) {
 
   //Close Dialog
   const handleClose = () => {
-    setOpenBook(false);
+    setOpenTelevision(false);
   };
 
   const [newPodcast, setNewPodcast] = React.useState({
     media_type_id: 4,
-    title_podcast: '',
-    season_podcast: '',
-    episode_podcast: '',
-    thoughts_podcast: '',
-    status_podcast: '',
+    title: '',
+    season: '',
+    episode: '',
+    thoughts: '',
+    status: '',
     date: '',
   });
 
@@ -72,19 +72,19 @@ function AddPodcast({openPodcast, setOpenPodcast}) {
         setNewPodcast({ ...newPodcast, media_type_id: event.target.value });
         break;
       case 'title_book':
-        setNewPodcast({ ...newPodcast, title_book: event.target.value });
+        setNewPodcast({ ...newPodcast, title: event.target.value });
         break;
       case 'season_podcast':
-        setNewPodcast({ ...newPodcast, season_podcast: event.target.value });
+        setNewPodcast({ ...newPodcast, season: event.target.value });
         break;
       case 'episode_podcast':
-        setNewPodcast({ ...newPodcast, episode_podcast: event.target.value });
+        setNewPodcast({ ...newPodcast, episode: event.target.value });
         break;
       case 'thoughts_podcast':
-        setNewPodcast({ ...newPodcast, thoughts_podcast: event.target.value });
+        setNewPodcast({ ...newPodcast, thoughts: event.target.value });
         break;
       case 'status_podcast':
-        setNewPodcast({ ...newPodcast, status_podcast: event.target.value });
+        setNewPodcast({ ...newPodcast, status: event.target.value });
         break;
       case 'date':
         setNewPodcast({ ...newPodcast, date: event.target.value });
@@ -107,11 +107,11 @@ function AddPodcast({openPodcast, setOpenPodcast}) {
     //adding new media item
     setNewPodcast({
       media_type_id: '',
-      title_podcast: '',
-      season_podcast: '',
-      episode_podcast: '',
-      thoughts_podcast: '',
-      status_podcast: '',
+      title: '',
+      season: '',
+      episode: '',
+      thoughts: '',
+      status: '',
       date: '',
     });
 
@@ -165,7 +165,7 @@ function AddPodcast({openPodcast, setOpenPodcast}) {
                 }}
                 type="text"
                 value={newPodcast.title}
-                onChange={(event) => handleChange('title_podcast', event)}
+                onChange={(event) => handleChange('title', event)}
                 variant="outlined"
               />
             </div>
@@ -181,7 +181,7 @@ function AddPodcast({openPodcast, setOpenPodcast}) {
                   shrink: true,
                 }}
                 value={newPodcast.season}
-                onChange={(event) => handleChange('season_podcast', event)}
+                onChange={(event) => handleChange('season', event)}
                 variant="outlined"
               />
             </div>
@@ -197,7 +197,7 @@ function AddPodcast({openPodcast, setOpenPodcast}) {
                   shrink: true,
                 }}
                 value={newPodcast.episode}
-                onChange={(event) => handleChange('episode_podcast', event)}
+                onChange={(event) => handleChange('episode', event)}
                 variant="outlined"
               />
             </div>
@@ -209,7 +209,7 @@ function AddPodcast({openPodcast, setOpenPodcast}) {
                 rows={4}
                 style={{ width: 250, margin: 8 }}
                 value={newPodcast.thoughts}
-                onChange={(event) => handleChange('thoughts-podcast', event)}
+                onChange={(event) => handleChange('thoughts', event)}
                 variant="outlined"
               />
             </div>

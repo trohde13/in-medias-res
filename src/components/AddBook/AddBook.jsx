@@ -55,10 +55,10 @@ function AddBook({openBook, setOpenBook}) {
 
     const [newBook, setNewBook] = React.useState({
         media_type_id: 1,
-        title_book: '',
+        title: '',
         author: '',
-        thoughts_book: '',
-        status_book: '',
+        thoughts: '',
+        status: '',
         date: ''
     })
 
@@ -70,16 +70,16 @@ function AddBook({openBook, setOpenBook}) {
                 setNewBook({...newBook, media_type_id: event.target.value})
                 break;
             case 'title_book':
-                setNewBook({...newBook, title_book: event.target.value})
+                setNewBook({...newBook, title: event.target.value})
                 break;
             case 'author':
                 setNewBook({...newBook, author: event.target.value})
                 break;
             case 'thoughts_book':
-                setNewBook({...newBook, thoughts_book: event.target.value})
+                setNewBook({...newBook, thoughts: event.target.value})
                 break;
             case 'status_book':
-                setNewBook({...newBook, status_book: event.target.value})
+                setNewBook({...newBook, status: event.target.value})
                 break;
             case 'date':
                 setNewBook({...newBook, date: event.target.value})
@@ -105,10 +105,10 @@ function AddBook({openBook, setOpenBook}) {
         //adding new media item
         setNewBook({
             media_type_id: '',
-            title_book: '',
+            title: '',
             author: '',
-            thoughts_book: '',
-            status_book: '',
+            thoughts: '',
+            status: '',
             date: ''
         });
 
@@ -162,8 +162,8 @@ function AddBook({openBook, setOpenBook}) {
                   shrink: true,
                 }}
                 type="text"
-                value={newBook.title_book}
-                onChange={(event) => handleChange('title_book', event)}
+                value={newBook.title}
+                onChange={(event) => handleChange('title', event)}
                 variant="outlined"
               />
             </div>
@@ -195,7 +195,7 @@ function AddBook({openBook, setOpenBook}) {
                   shrink: true,
                 }}
                 value={newBook.thoughts}
-                onChange={(event) => handleChange('thoughts_book', event)}
+                onChange={(event) => handleChange('thoughts', event)}
                 variant="outlined"
               />
             </div>
@@ -207,8 +207,8 @@ function AddBook({openBook, setOpenBook}) {
                 <Select
                   labelId="status-input"
                   id="book-status"
-                  value={newBook.status_book}
-                  onChange={(event) => handleChange('status_book', event)}
+                  value={newBook.status}
+                  onChange={(event) => handleChange('status', event)}
                   label="status"
                   defaultValue="Current"
                   style={{ width: 250, margin: 8 }}

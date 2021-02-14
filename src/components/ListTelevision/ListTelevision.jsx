@@ -15,15 +15,15 @@ const useStyles = makeStyles((theme) => ({
   root: {
     display: 'flex',
     flexWrap: 'wrap',
-    '& > *': {
-      margin: theme.spacing(1),
-      width: theme.spacing(16),
-      height: theme.spacing(16),
-    },
+    // '& > *': {
+    //   margin: theme.spacing(1),
+    //   width: theme.spacing(16),
+    //   height: theme.spacing(16),
+    // },
   },
 }));
 
-function BookList() {
+function ListTelevision() {
   const history = useHistory();
   const dispatch = useDispatch();
   const media = useSelector((store) => store.media);
@@ -41,7 +41,7 @@ function BookList() {
   const handleJournal = () => {
     history.push('/journal');
   };
-
+  console.log('log of media in journal', media);
   return (
     <main>
       <h1>Books Read:</h1>
@@ -49,14 +49,14 @@ function BookList() {
       <div className={classes.root}>
         <Paper
           elevation={4}
-          style={{ width: 400, margin: 8 }}
+          style={{ width: 700, margin: 8, padding: 4 }}
           align="center"
           key={media.id}
         >
-          {media.map((book) => {
+          {media.map((television) => {
             return (
               <Typography variant="body2">
-                {book.title_book} by {book.author}{' '}
+                {television.title} -- {television.season} . {television.episode} {' '}
               </Typography>
             );
           })}
@@ -71,6 +71,6 @@ function BookList() {
       </div>
     </main>
   );
-} //end BookList
+} //end ListTelevision
 
-export default BookList;
+export default ListTelevision;

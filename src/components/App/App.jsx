@@ -22,7 +22,7 @@ import RegisterPage from '../RegisterPage/RegisterPage';
 import AddEntry from '../AddEntry/AddEntry';
 import Dashboard from '../Dashboard/Dashboard';
 import Journal from '../Journal/Journal';
-import BookList from '../BookList/BookList';
+import ListBook from '../ListBook/ListBook';
 
 import './App.css';
 
@@ -89,9 +89,9 @@ function App() {
           <ProtectedRoute
             // logged in shows Dashboard else shows LoginPage
             exact
-            path="/booklist"
+            path="/listbook"
           >
-            <BookList />
+            <ListBook />
           </ProtectedRoute>
 
           <ProtectedRoute

@@ -38,7 +38,7 @@ function JournalItem({ media }) {
   };
 
   return (
-
+    // second map for date -- media entries , here id matches that day
     <Card variant="outlined" elevation={4}>
       <Box 
         paddingTop={2}
@@ -57,12 +57,12 @@ function JournalItem({ media }) {
             Books ...
           </Typography>
           <Typography variant="body1">
-            {media.title_book} by {media.author}
+            {media.title} by {media.author}
           </Typography>
           <Typography variant="body2">
-            Thoughts: {media.thoughts_book}
+            Thoughts: {media.thoughts}
           </Typography>
-          <Typography variant="body2">{media.status_book}</Typography>
+          <Typography variant="body2">{media.status}</Typography>
         </CardContent>
         <CardActions>
           <Button onClick={handleDelete}>Delete</Button>
@@ -86,12 +86,12 @@ function JournalItem({ media }) {
             Movies ...
           </Typography>
           <Typography variant="body1">
-            {media.title_movie}, {media.year}
+            {media.title}, {media.year}
           </Typography>
           <Typography variant="body2">
-            Thoughts: {media.thoughts_movie}
+            Thoughts: {media.thoughts}
           </Typography>
-          <Typography variant="body2">Status: {media.status_movie}</Typography>
+          <Typography variant="body2">Status: {media.status}</Typography>
         </CardContent>
         <CardActions>
           <Button onClick={handleDelete}>Delete</Button>
@@ -115,14 +115,14 @@ function JournalItem({ media }) {
             Television ...
           </Typography>
           <Typography variant="body1">
-            {media.title_television} -- {media.season_television}.
-            {media.episode_television}
+            {media.title} -- {media.season_television}.
+            {media.episode}
           </Typography>
           <Typography variant="body2">
-            Thoughts: {media.thoughts_television}
+            Thoughts: {media.thoughts}
           </Typography>
           <Typography variant="body2">
-            Status: {media.status_television}
+            Status: {media.status}
           </Typography>
         </CardContent>
         <CardActions>
@@ -147,14 +147,14 @@ function JournalItem({ media }) {
             Podcasts ...
           </Typography>
           <Typography variant="body1">
-            {media.title_podcast} -- {media.season_podcast}.
-            {media.episode_podcast}
+            {media.title} -- {media.season}.
+            {media.episode}
           </Typography>
           <Typography variant="body2">
-            Thoughts: {media.thoughts_podcast}
+            Thoughts: {media.thoughts}
           </Typography>
           <Typography variant="body2">
-            Status: {media.status_podcast}
+            Status: {media.status}
           </Typography>
         </CardContent>
         <CardActions>

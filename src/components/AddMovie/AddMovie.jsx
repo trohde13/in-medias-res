@@ -51,15 +51,15 @@ function AddMovie({openMovie, setOpenMovie}) {
   
     //Close Dialog
   const handleClose = () => {
-    setOpenBook(false);
+    setOpenMovie(false);
   };
   
   const [newMovie, setNewMovie] = React.useState({
     media_type_id: 2,
-    title_movie: '',
+    title: '',
     year: '',
-    thoughts_movie: '',
-    status_movie: '',
+    thoughts: '',
+    status: '',
     date: '',
   });
 
@@ -71,16 +71,16 @@ function AddMovie({openMovie, setOpenMovie}) {
         setNewMovie({ ...newMovie, media_type_id: event.target.value });
         break;
       case 'title_movie':
-        setNewMovie({ ...newMovie, title_movie: event.target.value });
+        setNewMovie({ ...newMovie, title: event.target.value });
         break;
       case 'year':
         setNewMovie({ ...newMovie, year: event.target.value });
         break;
       case 'thoughts_movie':
-        setNewMovie({ ...newMovie, thoughts_movie: event.target.value });
+        setNewMovie({ ...newMovie, thoughts: event.target.value });
         break;
       case 'status_movie':
-        setNewMovie({ ...newMovie, status_movie: event.target.value });
+        setNewMovie({ ...newMovie, status: event.target.value });
         break;
       case 'date':
         setNewMovie({ ...newMovie, date: event.target.value });
@@ -101,10 +101,10 @@ function AddMovie({openMovie, setOpenMovie}) {
     //adding new media item
     setNewMovie({
       media_type_id: '',
-      title_movie: '',
+      title: '',
       year: '',
-      thoughts_movie: '',
-      status_movie: '',
+      thoughts: '',
+      status: '',
       date: '',
     });
 
@@ -158,7 +158,7 @@ function AddMovie({openMovie, setOpenMovie}) {
                 }}
                 type="text"
                 value={newMovie.title}
-                onChange={(event) => handleChange('title_movie', event)}
+                onChange={(event) => handleChange('title', event)}
                 variant="outlined"
               />
             </div>
@@ -186,7 +186,7 @@ function AddMovie({openMovie, setOpenMovie}) {
                 rows={4}
                 style={{ width: 250, margin: 8 }}
                 value={newMovie.thoughts}
-                onChange={(event) => handleChange('thoughts_movie', event)}
+                onChange={(event) => handleChange('thoughts', event)}
                 variant="outlined"
               />
             </div>
@@ -199,7 +199,7 @@ function AddMovie({openMovie, setOpenMovie}) {
                   labelId="status-input"
                   id="movie-status"
                   value={newMovie.status}
-                  onChange={(event) => handleChange('status_movie', event)}
+                  onChange={(event) => handleChange('status', event)}
                   label="status"
                   defaultValue="Current"
                   style={{ width: 250, margin: 8 }}

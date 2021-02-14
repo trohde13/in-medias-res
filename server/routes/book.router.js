@@ -4,19 +4,26 @@ const pool = require('../modules/pool')
 
 
 
+
+//GET route to get finished title/ author for ListBook
+
+
+
+
 //POST route to add a new book item to database
 router.post('/', (req, res) => {
     console.log(req.body);
     const insertMediaQuery = `
-    INSERT INTO "media" ("media_type_id", "title_book", "author", "thoughts_book", "date", "status_book")
-    VALUES ($1, $2, $3, $4, $5, $6);`;
+    INSERT INTO "media" ("media_type_id", "title", "author", "thoughts", "date", "status", "user_id")
+    VALUES ($1, $2, $3, $4, $5, $6, $7);`;
 
     pool.query(insertMediaQuery, [req.body.media_type_id, 
-                                req.body.title_book, 
+                                req.body.title, 
                                 req.body.author, 
-                                req.body.thoughts_book, 
+                                req.body.thoughts, 
                                 req.body.date, 
-                                req.body.status_book, 
+                                req.body.status, 
+                                req.body.user_id
                                ])
         .then( result => {
             console.log('New Book Entry:', result.rows)

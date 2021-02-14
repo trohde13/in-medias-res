@@ -109,3 +109,6 @@ function Journal() {
 } //end journal
 
 export default Journal;
+
+ex. moment date format change (doesn't work for mapping):
+{moment("{media.date}").format("MMMM Do YYYY")}{""}

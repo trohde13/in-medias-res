@@ -51,16 +51,16 @@ function AddTelevision({openTelevision, setOpenTelevision}) {
 
 //Close Dialog
 const handleClose = () => {
-    setOpenBook(false);
+    setOpenTelevision(false);
   };
 
   const [newTelevision, setNewTelevision] = React.useState({
     media_type_id: 3,
-    title_television: '',
-    season_television: '',
-    episode_television: '',
-    thoughts_television: '',
-    status_television: '',
+    title: '',
+    season: '',
+    episode: '',
+    thoughts: '',
+    status: '',
     date: '',
   });
 
@@ -77,31 +77,31 @@ const handleClose = () => {
       case 'title_televison':
         setNewTelevision({
           ...newTelevision,
-          title_televison: event.target.value,
+          title: event.target.value,
         });
         break;
       case 'season_televison':
         setNewTelevision({
           ...newTelevision,
-          season_televison: event.target.value,
+          season: event.target.value,
         });
         break;
       case 'episode_televison':
         setNewTelevision({
           ...newTelevision,
-          episode_televison: event.target.value,
+          episode: event.target.value,
         });
         break;
       case 'thoughts_televison':
         setNewTelevision({
           ...newTelevision,
-          thoughts_televison: event.target.value,
+          thoughts: event.target.value,
         });
         break;
       case 'status_televison':
         setNewTelevision({
           ...newTelevision,
-          status_televison: event.target.value,
+          status: event.target.value,
         });
         break;
       case 'date':
@@ -123,11 +123,11 @@ const handleClose = () => {
     //adding new media item
     setNewTelevision({
       media_type_id: '',
-      title_television: '',
-      season_television: '',
-      episode_television: '',
-      thoughts_television: '',
-      status_television: '',
+      title: '',
+      season: '',
+      episode: '',
+      thoughts: '',
+      status: '',
       date: '',
     });
 
@@ -181,7 +181,7 @@ const handleClose = () => {
                 }}
                 type="text"
                 value={newTelevision.title}
-                onChange={(event) => handleChange('title_television', event)}
+                onChange={(event) => handleChange('title', event)}
                 variant="outlined"
               />
             </div>
@@ -197,7 +197,7 @@ const handleClose = () => {
                   shrink: true,
                 }}
                 value={newTelevision.season}
-                onChange={(event) => handleChange('season_television', event)}
+                onChange={(event) => handleChange('season', event)}
                 variant="outlined"
               />
             </div>
@@ -213,7 +213,7 @@ const handleClose = () => {
                   shrink: true,
                 }}
                 value={newTelevision.episode}
-                onChange={(event) => handleChange('episode_television', event)}
+                onChange={(event) => handleChange('episode', event)}
                 variant="outlined"
               />
             </div>
@@ -225,7 +225,7 @@ const handleClose = () => {
                 rows={4}
                 style={{ width: 250, margin: 8 }}
                 value={newTelevision.thoughts}
-                onChange={(event) => handleChange('thoughts_television', event)}
+                onChange={(event) => handleChange('thoughts', event)}
                 variant="outlined"
               />
             </div>

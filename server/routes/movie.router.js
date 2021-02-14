@@ -3,19 +3,27 @@ const router = express.Router();
 const pool = require('../modules/pool')
 
 
+
+
+//GET route to get finished title/ year for ListMovie
+
+
+
+
 //POST route to add a new media item to database
 router.post('/', (req, res) => {
     console.log(req.body);
     const insertMediaQuery = `
-    INSERT INTO "media" ("media_type_id", "title_movie", "year", "thoughts_movie", "date", "status_movie")
-    VALUES ($1, $2, $3, $4, $5, $6);`;
+    INSERT INTO "media" ("media_type_id", "title", "year", "thoughts", "date", "status", "user_id")
+    VALUES ($1, $2, $3, $4, $5, $6, $7);`;
 
     pool.query(insertMediaQuery, [req.body.media_type_id, 
-                                req.body.title_movie, 
+                                req.body.title, 
                                 req.body.year, 
-                                req.body.thoughts_movie, 
+                                req.body.thoughts, 
                                 req.body.date, 
-                                req.body.status_movie, 
+                                req.body.status, 
+                                req.body.user_id,
                                ])
         .then( result => {
             console.log('New Movie Entry:', result.rows)
