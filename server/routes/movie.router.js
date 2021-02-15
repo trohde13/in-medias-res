@@ -38,7 +38,7 @@ router.post('/', (req, res) => {
                                 req.body.thoughts, 
                                 req.body.date, 
                                 req.body.status, 
-                                req.body.user_id,
+                                req.user.id,
                                ])
         .then( result => {
             console.log('New Movie Entry:', result.rows)

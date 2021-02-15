@@ -62,7 +62,6 @@ function AddBook({openBook, setOpenBook}) {
         thoughts: '',
         status: '',
         date: '',
-        user_id: ''
     })
 
      //function to update state from input fields
@@ -113,7 +112,6 @@ function AddBook({openBook, setOpenBook}) {
             thoughts: '',
             status: '',
             date: '',
-            user_id: '',
         });
 
         history.push('/journal')

@@ -7,6 +7,7 @@ import book from './book.reducer';
 import movie from './movie.reducer';
 import television from './television.reducer';
 import podcast from './podcast.reducer';
+import edit from './edit.reducer'
 
 // rootReducer is the primary reducer for our entire project
 // It bundles up all of the other reducers so our project can use them.
@@ -23,6 +24,7 @@ const rootReducer = combineReducers({
   movie, // stores finished moviess returned from server
   television, // stores finished television returned from server
   podcast, // stores finished podcasts returned from server
+  edit, //stores entry to edit
 });
 
 export default rootReducer;

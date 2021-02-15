@@ -31,7 +31,7 @@ function Nav() {
 
         {user.id && (
           <>
-            <Link className="navLink" to="/dashboard">
+            <Link className="navLink" to="/user">
               Dashboard
             </Link>
 
