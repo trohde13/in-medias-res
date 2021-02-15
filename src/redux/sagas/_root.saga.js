@@ -7,6 +7,7 @@ import bookSaga from './book.saga';
 import movieSaga from './movie.saga';
 import televisionSaga from './television.saga';
 import podcastSaga from './podcast.saga';
+import editSaga from './edit.saga';
 
 // rootSaga is the primary saga.
 // It bundles up all of the other sagas so our project can use them.
@@ -25,5 +26,6 @@ export default function* rootSaga() {
     movieSaga(),
     televisionSaga(),
     podcastSaga(),
+    editSaga(),
   ]);
 }
