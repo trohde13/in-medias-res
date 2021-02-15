@@ -5,7 +5,7 @@ import { put, takeEvery } from 'redux-saga/effects';
 //generator function to GET all media from database: will be fired on FETCH_MEDIA actions
 function* fetchMedia() {
     try {
-        const media = yield axios.get('/api/media/');
+        const media = yield axios.get('/api/media/all');
         console.log('get all:', media.data);
         yield put({ type: 'SET_MEDIA', payload: media.data });
     } catch {
@@ -31,7 +31,7 @@ function* fetchDate() {
 function* deleteMedia(action) {
     try {
         const mediaId = action.payload;
-        yield axios.delete(`/api/media/${mediaId}`);
+        yield axios.delete(`/api/media/all/${mediaId}`);
         yield put({ type: 'FETCH_MEDIA' });
     } catch (error) {
         console.log('error in deleting media', error)

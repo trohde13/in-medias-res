@@ -29,6 +29,8 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
+
+
 function Journal() {
   const classes = useStyles();
 
@@ -38,46 +40,46 @@ function Journal() {
 
   useEffect(() => {
     dispatch({ type: 'FETCH_DATE' });
+    dispatch({ type: 'FETCH_MEDIA' });
   }, []);
 
   return (
     <main>
-      <Grid
-        container
-        direction="column"
-        justify="center"
-        alignItems="stretch"
-        spacing={2}
-        xs={12}
-        sm={6}
-      >
+      <Grid container>
         <Grid item xs={12}>
           <Typography variant="h4">Welcome to your Journal</Typography>
         </Grid>
         <Grid item xs={6} sm={3}></Grid>
-        {/* first map for date ids */}
-        {dateArrayIds.map((media, i) => {
-          return (
-            <Grid item key={i}>
-              <Accordion>
-                <AccordionSummary
-                  expandIcon={<ExpandMoreIcon />}
-                  aria-controls="panel1a-content"
-                  id="panel1a-header"
-                >
-                  <Typography variant="subtitle1" className={classes.heading}>
-                    {media.date}
-                  </Typography>
-                </AccordionSummary>
-                <AccordionDetails>
-                  <JournalItem dateArrayIds={media.dateIDs} />
-                </AccordionDetails>
-              </Accordion>
-            </Grid>
-          );
-        })}
+        <Grid item
+            direction="column"
+            justify="center"
+            alignItems="stretch"
+            spacing={2}
+            xs={12} sm={6}>
+          {/* first map for date ids */}
+          {dateArrayIds.map((media, i) => {
+            return (
+              <Grid item key={i}>
+                <Accordion>
+                  <AccordionSummary
+                    expandIcon={<ExpandMoreIcon />}
+                    aria-controls="panel1a-content"
+                    id="panel1a-header"
+                  >
+                    <Typography variant="subtitle1" className={classes.heading}>
+                      {media.date}
+                    </Typography>
+                  </AccordionSummary>
+                  <AccordionDetails>
+                    <JournalItem dateArrayIds={media.dateIDs} />
+                  </AccordionDetails>
+                </Accordion>
+              </Grid>
+            );
+          })}
+        </Grid>
+        <Grid item xs={6} sm={3}></Grid>
       </Grid>
-      <Grid item xs={6} sm={3}></Grid>
     </main>
   );
 } //end journal

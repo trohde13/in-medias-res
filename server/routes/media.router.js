@@ -3,7 +3,7 @@ const router = express.Router();
 const pool = require('../modules/pool')
 
 //GET route to retrieve all media from database to map
-router.get('/', (req, res) => {
+router.get('/all', (req, res) => {
 
     const queryText = `
         SELECT * FROM "media" 
@@ -42,7 +42,7 @@ router.get('/datearray', (req, res) => {
 
 
 //DELETE route to delete media item
-router.delete('/:id', (req, res) => {
+router.delete('/all/:id', (req, res) => {
     const queryText = `DELETE FROM "media" WHERE id=$1;`;
     pool.query(queryText, [req.params.id])
         .then(() => {

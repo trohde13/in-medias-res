@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { useHistory } from 'react-router-dom';
+import { useHistory, useParams } from 'react-router-dom';
 import { makeStyles } from '@material-ui/core/styles';
 import {
   Card,
@@ -36,18 +36,18 @@ function JournalItem({ dateArrayIds }) {
 
   const media = useSelector((store) => store.media);
 
-  useEffect(() => {
-    dispatch({ type: 'FETCH_MEDIA' });
-  }, []);
+  // useEffect(() => {
+  //   dispatch({ type: 'FETCH_MEDIA' });
+  // }, []);
 
   const mediaToDisplay = media.filter(
     (entry) => dateArrayIds.indexOf(entry.id) > -1
   ); //end mediaToDisplay
 
   //function to delete an item
-  const handleDelete = () => {
+  const handleDelete = (id) => {
     console.log('clicked handleDelete');
-    dispatch({ type: 'DELETE_MEDIA', payload: media.id });
+    dispatch({ type: 'DELETE_MEDIA', payload: id });
   };
 
   //function to edit an item
@@ -135,7 +135,7 @@ function JournalItem({ dateArrayIds }) {
               </CardContent>
 
               <CardActions>
-                <Button onClick={handleDelete}>Delete</Button>
+                <Button onClick={() => handleDelete(media.id)}>Delete</Button>
                 <Button onClick={() => handleEdit(media.id) }>Edit</Button>
               </CardActions>
             </Paper>
