@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { useHistory } from 'react-router-dom';
 import { makeStyles } from '@material-ui/core/styles';
 import {
   Card,
@@ -31,6 +32,7 @@ const useStyles = makeStyles({
 function JournalItem({ dateArrayIds }) {
   const classes = useStyles();
   const dispatch = useDispatch();
+  const history = useHistory();
 
   const media = useSelector((store) => store.media);
 
@@ -47,6 +49,12 @@ function JournalItem({ dateArrayIds }) {
     console.log('clicked handleDelete');
     dispatch({ type: 'DELETE_MEDIA', payload: media.id });
   };
+
+  //function to edit an item
+  const handleEdit = (id) => {
+    console.log('clicked handleEdit');
+    history.push( `/editentry/${id}` )
+  }
 
   
 
@@ -101,7 +109,7 @@ function JournalItem({ dateArrayIds }) {
                       Television ...
                     </Typography>
                     <Typography variant="body1">
-                      {media.title} -- {media.season_television}.{media.episode}
+                      {media.title} -- {media.season}.{media.episode}
                     </Typography>
                   </>
                 ) : (
@@ -128,6 +136,7 @@ function JournalItem({ dateArrayIds }) {
 
               <CardActions>
                 <Button onClick={handleDelete}>Delete</Button>
+                <Button onClick={() => handleEdit(media.id) }>Edit</Button>
               </CardActions>
             </Paper>
           </Box>

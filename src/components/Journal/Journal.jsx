@@ -40,33 +40,26 @@ function Journal() {
     dispatch({ type: 'FETCH_DATE' });
   }, []);
 
-
-  
   return (
     <main>
-      
-
-      <Grid 
+      <Grid
         container
         direction="column"
         justify="center"
         alignItems="stretch"
-        spacing={2} 
-        xs={12} sm={6}
+        spacing={2}
+        xs={12}
+        sm={6}
       >
         <Grid item xs={12}>
           <Typography variant="h4">Welcome to your Journal</Typography>
-        </Grid> 
-        <Grid item xs={6} sm={3}>
-        </Grid>         
-          {/* first map for date ids */}
+        </Grid>
+        <Grid item xs={6} sm={3}></Grid>
+        {/* first map for date ids */}
         {dateArrayIds.map((media, i) => {
           return (
-            <Grid
-                
-                item key={i}
-            >
-              <Accordion> 
+            <Grid item key={i}>
+              <Accordion>
                 <AccordionSummary
                   expandIcon={<ExpandMoreIcon />}
                   aria-controls="panel1a-content"
@@ -84,8 +77,7 @@ function Journal() {
           );
         })}
       </Grid>
-      <Grid item xs={6} sm={3}>
-        </Grid>
+      <Grid item xs={6} sm={3}></Grid>
     </main>
   );
 } //end journal

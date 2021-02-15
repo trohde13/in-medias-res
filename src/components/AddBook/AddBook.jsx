@@ -71,16 +71,16 @@ function AddBook({openBook, setOpenBook}) {
             case 'media_type_id':
                 setNewBook({...newBook, media_type_id: event.target.value})
                 break;
-            case 'title_book':
+            case 'title':
                 setNewBook({...newBook, title: event.target.value})
                 break;
             case 'author':
                 setNewBook({...newBook, author: event.target.value})
                 break;
-            case 'thoughts_book':
+            case 'thoughts':
                 setNewBook({...newBook, thoughts: event.target.value})
                 break;
-            case 'status_book':
+            case 'status':
                 setNewBook({...newBook, status: event.target.value})
                 break;
             case 'date':
@@ -92,12 +92,7 @@ function AddBook({openBook, setOpenBook}) {
     //onClick function to submit books
     const handleSubmit = (event) => {
         console.log('clicked handleSubmit');
-
-        //event.preventDefault();
-
-        //setting date
-        // setDate(date);
-
+        
         //dispatch here:
         dispatch({
             type: 'ADD_BOOK',

@@ -20,12 +20,12 @@ import LandingPage from '../LandingPage/LandingPage';
 import LoginPage from '../LoginPage/LoginPage';
 import RegisterPage from '../RegisterPage/RegisterPage';
 import AddEntry from '../AddEntry/AddEntry';
-import Dashboard from '../Dashboard/Dashboard';
 import Journal from '../Journal/Journal';
 import ListBook from '../ListBook/ListBook';
 import ListMovie from '../ListMovie/ListMovie';
 import ListTelevision from '../ListTelevision/ListTelevision';
 import ListPodcast from '../ListPodcast/ListPodcast';
+import EditEntry from '../EditEntry/EditEntry';
 
 import './App.css';
 
@@ -84,14 +84,6 @@ function App() {
           <ProtectedRoute
             // logged in shows Dashboard else shows LoginPage
             exact
-            path="/dashboard"
-          >
-            <Dashboard />
-          </ProtectedRoute>
-
-          <ProtectedRoute
-            // logged in shows Dashboard else shows LoginPage
-            exact
             path="/listbook"
           >
             <ListBook />
@@ -119,6 +111,14 @@ function App() {
             path="/listpodcast"
           >
             <ListPodcast />
+          </ProtectedRoute>
+
+          <ProtectedRoute
+            // logged in shows Dashboard else shows LoginPage
+            exact
+            path="/editentry/:id"
+          >
+            <EditEntry />
           </ProtectedRoute>
 
           <ProtectedRoute

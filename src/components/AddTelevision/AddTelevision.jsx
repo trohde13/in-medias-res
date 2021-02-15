@@ -74,31 +74,31 @@ const handleClose = () => {
           media_type_id: event.target.value,
         });
         break;
-      case 'title_televison':
+      case 'title':
         setNewTelevision({
           ...newTelevision,
           title: event.target.value,
         });
         break;
-      case 'season_televison':
+      case 'season':
         setNewTelevision({
           ...newTelevision,
           season: event.target.value,
         });
         break;
-      case 'episode_televison':
+      case 'episode':
         setNewTelevision({
           ...newTelevision,
           episode: event.target.value,
         });
         break;
-      case 'thoughts_televison':
+      case 'thoughts':
         setNewTelevision({
           ...newTelevision,
           thoughts: event.target.value,
         });
         break;
-      case 'status_televison':
+      case 'status':
         setNewTelevision({
           ...newTelevision,
           status: event.target.value,
@@ -117,7 +117,7 @@ const handleClose = () => {
     //dispatch here:
     dispatch({
       type: 'ADD_TELEVISION',
-      payload: newTelevison,
+      payload: newTelevision,
     });
 
     //adding new media item
@@ -152,7 +152,7 @@ const handleClose = () => {
             {/* select date for entry */}
             <div>
               <TextField
-                id="outlined-full-width"
+                id="television-date"
                 label="date ..."
                 style={{ width: 250, margin: 8 }}
                 fullWidth
@@ -170,7 +170,7 @@ const handleClose = () => {
             {/* input fields for title, season, episode, thoughts */}
             <div>
               <TextField
-                id="outlined-full-width"
+                id="television-title"
                 label="title ..."
                 style={{ width: 250, margin: 8 }}
                 placeholder="enter title"
@@ -187,7 +187,7 @@ const handleClose = () => {
             </div>
             <div>
               <TextField
-                id="outlined-full-width"
+                id="television-season"
                 label="season ..."
                 style={{ width: 250, margin: 8 }}
                 placeholder="enter season number"
@@ -203,7 +203,7 @@ const handleClose = () => {
             </div>
             <div>
               <TextField
-                id="outlined-full-width"
+                id="television-episode"
                 label="episode ..."
                 style={{ width: 250, margin: 8 }}
                 placeholder="enter episode number"
@@ -234,7 +234,7 @@ const handleClose = () => {
                 <InputLabel id="status-input">status ...</InputLabel>
                 <Select
                   labelId="status-input"
-                  id="simple-select-outlined"
+                  id="television-status"
                   value={newTelevision.status}
                   onChange={(event) => handleChange('status', event)}
                   label="status"

@@ -31,7 +31,7 @@ app.use('/api/user', userRouter);
 app.use('/api/media', mediaRouter);
 app.use('/api/book', bookRouter);
 app.use('/api/movie', movieRouter);
-app.use('/api/televison', televisionRouter);
+app.use('/api/television', televisionRouter);
 app.use('/api/podcast', podcastRouter);
 
 // Serve static files

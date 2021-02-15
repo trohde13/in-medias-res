@@ -54,6 +54,48 @@ router.delete('/:id', (req, res) => {
         })
 });
 
+//GET route to retrieve entry to edit
+router.get('/:id', (req, res) => {
+    //Get entry to update
+    console.log(req.params.id)
+    const id = req.params.id;
+    const queryText = `SELECT * from "media" WHERE "id" = $1;`;
+    pool.query(queryText, [id])
+        .then( result => {
+            res.send(result.rows);
+        })
+        .catch( error => {
+            console.log(`ERROR in retrieving entry ${queryText}`, error)
+            res.sendStatus(500);
+        })
+});
 
+
+//PUT route to update entry after edit
+router.put('/:id', (req, res) => {
+    // Update this entry
+    const idToUpdate = req.params.id;
+    const queryText = `
+        UPDATE "media"
+        SET "date" = $1, "title" = $2, "author" = $3, "thoughts" = $4, "status" = $5, "year" = $6, "season" = $7, "episode" = $8
+        WHERE "id" = $9;`;
+    pool.query(queryText, [req.body.date,
+                            req.body.title, 
+                            req.body.author, 
+                            req.body.thoughts,
+                            req.body.status, 
+                            req.body.year,
+                            req.body.season,
+                            req.body.episode,
+                            idToUpdate
+                        ])
+        .then( result => {
+            res.sendStatus(200);
+        })
+        .catch( error => {
+            console.log (`ERROR making database update ${queryText}`, error);
+            res.sendStatus(500);
+        })
+})
 
 module.exports = router;

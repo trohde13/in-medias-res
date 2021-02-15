@@ -1,7 +1,10 @@
 // reducer to hold single entry object being edited
-const editMediaEntry = (state = {}, action) {
+const editMediaEntry = (state = {}, action) => {
     switch (action.type) {
-        
+        case 'SET_EDIT_ENTRY':
+            return action.payload;
+        case 'EDIT_DATE':
+            return {...state, date: action.payload};
         case 'EDIT_TITLE':
             return {...state, title: action.payload};
         case 'EDIT_AUTHOR':
@@ -20,3 +23,5 @@ const editMediaEntry = (state = {}, action) {
             return state
     }
 }; //end editMediaEntry
+
+export default editMediaEntry;

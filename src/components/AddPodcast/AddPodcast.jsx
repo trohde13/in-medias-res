@@ -71,19 +71,19 @@ function AddPodcast({openPodcast, setOpenPodcast}) {
       case 'media_type_id':
         setNewPodcast({ ...newPodcast, media_type_id: event.target.value });
         break;
-      case 'title_book':
+      case 'title':
         setNewPodcast({ ...newPodcast, title: event.target.value });
         break;
-      case 'season_podcast':
+      case 'season':
         setNewPodcast({ ...newPodcast, season: event.target.value });
         break;
-      case 'episode_podcast':
+      case 'episode':
         setNewPodcast({ ...newPodcast, episode: event.target.value });
         break;
-      case 'thoughts_podcast':
+      case 'thoughts':
         setNewPodcast({ ...newPodcast, thoughts: event.target.value });
         break;
-      case 'status_podcast':
+      case 'status':
         setNewPodcast({ ...newPodcast, status: event.target.value });
         break;
       case 'date':

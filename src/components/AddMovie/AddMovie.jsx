@@ -70,16 +70,16 @@ function AddMovie({openMovie, setOpenMovie}) {
       case 'media_type_id':
         setNewMovie({ ...newMovie, media_type_id: event.target.value });
         break;
-      case 'title_movie':
+      case 'title':
         setNewMovie({ ...newMovie, title: event.target.value });
         break;
       case 'year':
         setNewMovie({ ...newMovie, year: event.target.value });
         break;
-      case 'thoughts_movie':
+      case 'thoughts':
         setNewMovie({ ...newMovie, thoughts: event.target.value });
         break;
-      case 'status_movie':
+      case 'status':
         setNewMovie({ ...newMovie, status: event.target.value });
         break;
       case 'date':

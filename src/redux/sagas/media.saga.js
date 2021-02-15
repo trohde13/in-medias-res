@@ -5,7 +5,7 @@ import { put, takeEvery } from 'redux-saga/effects';
 //generator function to GET all media from database: will be fired on FETCH_MEDIA actions
 function* fetchMedia() {
     try {
-        const media = yield axios.get('/api/media');
+        const media = yield axios.get('/api/media/');
         console.log('get all:', media.data);
         yield put({ type: 'SET_MEDIA', payload: media.data });
     } catch {
