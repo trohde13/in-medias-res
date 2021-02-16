@@ -31,10 +31,6 @@ function Nav() {
 
         {user.id && (
           <>
-            <Link className="navLink" to="/user">
-              Dashboard
-            </Link>
-
             <Link className="navLink" to="/listbook">
               Book List
             </Link>
