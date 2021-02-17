@@ -88,7 +88,7 @@ function Journal() {
                     id="panel1a-header"
                   >
                     <Typography variant="subtitle1" className={classes.heading}>
-                      {media.date}
+                      {moment(media.date).format("MMMM Do YYYY")}{""}
                     </Typography>
                   </AccordionSummary>
                   <AccordionDetails>
