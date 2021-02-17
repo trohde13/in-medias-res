@@ -59,7 +59,7 @@ function App() {
     <ThemeProvider theme={theme}>
     <Router>
       <div>
-        <Nav />
+        {/* <Nav /> */}
         <NavDrawer />
         <Switch>
           {/* Visiting localhost:3000 will redirect to localhost:3000/home */}

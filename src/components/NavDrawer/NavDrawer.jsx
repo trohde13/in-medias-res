@@ -8,6 +8,7 @@ import clsx from 'clsx';
 import { makeStyles } from '@material-ui/core/styles';
 import { 
   Typography,
+  Grid,
   Drawer, 
   Button, 
   List, 
@@ -18,6 +19,7 @@ import {
 import AddIcon from '@material-ui/icons/Add';
 import HomeIcon from '@material-ui/icons/Home';
 import BookIcon from '@material-ui/icons/Book';
+import MenuIcon from '@material-ui/icons/Menu';
 import Avatar from '@material-ui/core/Avatar';
 import ListItemAvatar from '@material-ui/core/ListItemAvatar';
 
@@ -81,18 +83,34 @@ function NavDrawer() {
   
 
   return (
-    {user.id && (
+    // {user.id && (
       
     <header>
+      <div className={classes.root}>
+      <Grid
+        container
+        direction="row"
+        alignItems="center"
+        spacing={3}
+      >
+       <Grid 
+        item
+        xs={12} sm={6}> 
       <div>
         <Typography variant="h2">in media res</Typography>
       </div>
+      </Grid>
+      <Grid item xs={6} sm={3}></Grid>
+      <Grid 
+      item 
+      justify="flex-end"
+      xs={6} sm={3}>
     <div>
     
       
      {['right'].map((anchor) => (
         <React.Fragment key={anchor}>
-        <Button onClick={toggleDrawer(anchor, true)}>{anchor}</Button>
+        <Button onClick={toggleDrawer(anchor, true)}><Avatar><MenuIcon /></Avatar></Button>
         <Drawer anchor={anchor} open={state[anchor]} onClose={toggleDrawer(anchor, false)}>
         <div
           className={clsx(classes.list, {
@@ -135,8 +153,11 @@ function NavDrawer() {
     
   
     </div>
+    </Grid>
+    </Grid>
+    </div> 
     </header>
-    )}
+    // )}
   );
 }; //end navDrawer
 

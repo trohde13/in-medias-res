@@ -35,7 +35,7 @@ function ListTelevision() {
   }, []);
 
   const handleReturn = () => {
-    history.push('/dashboard');
+    history.push('/user');
   };
 
   const handleJournal = () => {

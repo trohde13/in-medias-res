@@ -35,7 +35,7 @@ function ListPodcast() {
   }, []);
 
   const handleReturn = () => {
-    history.push('/dashboard');
+    history.push('/user');
   };
 
   const handleJournal = () => {
