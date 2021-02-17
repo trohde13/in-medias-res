@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { useHistory } from 'react-router-dom';
 import moment from 'moment';
 import { makeStyles } from '@material-ui/core/styles';
 import {
@@ -33,7 +34,7 @@ const useStyles = makeStyles((theme) => ({
 
 function Journal() {
   const classes = useStyles();
-
+  const history = useHistory();
   const dispatch = useDispatch();
   //useSelector to get media from reducer
   const dateArrayIds = useSelector((store) => store.date);
@@ -46,16 +47,36 @@ function Journal() {
   return (
     <main>
       <Grid container>
-        <Grid item xs={12}>
+      <Grid item xs={6} sm={3}></Grid>
+        <Grid item xs={12} sm={6}>
+          <Paper
+            elevation={4}
+            align="center"
+          >
           <Typography variant="h4">Welcome to your Journal</Typography>
+          </Paper>
         </Grid>
         <Grid item xs={6} sm={3}></Grid>
-        <Grid item
+        <Grid item xs={6} sm={3}></Grid>
+        <Grid item align="center" xs={12} sm={6}>
+            <Paper>
+              <Button 
+              variant="outlined"
+              color="primary"
+              onClick={() => history.push('/add')}
+              >
+                ADD ENTRY
+              </Button>
+            </Paper>
+            </Grid>
+            <Grid item xs={6} sm={3}></Grid>
+            <Grid item xs={6} sm={3}></Grid>
+          <Grid item
             direction="column"
             justify="center"
             alignItems="stretch"
             spacing={2}
-            xs={12} sm={6}>
+            xs={12} sm={6}>  
           {/* first map for date ids */}
           {dateArrayIds.map((media, i) => {
             return (

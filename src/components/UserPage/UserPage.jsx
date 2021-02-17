@@ -7,9 +7,11 @@ import {
   Paper, 
   Grid, 
   Button, 
+  ButtonGroup,
   Typography, 
   FormControl, 
   TextField,
+  Select, 
   InputLabel,
   MenuItem } from '@material-ui/core';
 
@@ -40,64 +42,78 @@ function UserPage() {
         container
         spacing={3}
       >
-        <Grid item xs={12} sm={12}>
-          <Paper className={classes.paper}>
+        <Grid item xs={6} sm={3}></Grid>
+        <Grid item xs={12} sm={6}>
+          <Paper 
+          elevation={4}
+          className={classes.paper}
+          >
             <Typography variant="h4">Welcome to in media res</Typography>
+            <Typography variant="body1">your personal journal of everything you love to read, watch & listen to</Typography>
           </Paper>
         </Grid>
-        <Grid item xs={12} sm={6}>
+        <Grid item xs={6} sm={3}>
           
         </Grid>
         <Grid item xs={12} sm={6}>
           
         </Grid>
-        <Grid item xs={12} sm={12}>
-          <Paper className={classes.paper}>
+        <Grid item xs={12} sm={6}>
+          
+        </Grid>
+        <Grid item xs={6} sm={3}>
+          
+        </Grid>
+        <Grid item xs={12} sm={6}>
+          <Paper
+          elevation={4} 
+          className={classes.paper}>
             <div>
+              <ButtonGroup variant="text">
               <Button onClick={() => history.push('/add')}>ADD ENTRY</Button>
+            
+              <Button onClick={() => history.push('/journal')}>YOUR JOURNAL</Button>
+              </ButtonGroup>
             </div>
             <div>
-              <Button onClick={() => history.push('/journal')}>YOUR JOURNAL</Button>
-            </div>
-            {/* <div>
               <FormControl variant="outlined" className={classes.formControl}>
-                <InputLabel id="status-input">status ...</InputLabel>
+                <InputLabel id="list-input">lists ...</InputLabel>
                 <Select
-                  labelId="status-input"
-                  id="book-status"
-                  value={newBook.status}
-                  onChange={(event) => handleChange('status', event)}
-                  label="status"
-                  defaultValue="Current"
+                  labelId="list-input"
+                  id="list-selector"
+                  label="media lists"
                   style={{ width: 250, margin: 8 }}
                 >
                   <MenuItem value="">
                     <em>None</em>
                   </MenuItem>
-                  <MenuItem value={'Current'}>Books</MenuItem>
-                  <MenuItem value={'Finished'}>Movies</MenuItem>
-                  <MenuItem value={'Abandoned'}>Abandoned</MenuItem>
+                  <MenuItem onClick={() => history.push('/listbook')}>Books List</MenuItem>
+                  <MenuItem onClick={() => history.push('/listmovie')}>Movies List</MenuItem>
+                  <MenuItem onClick={() => history.push('/listtelevision')}>Television List</MenuItem>
+                  <MenuItem onClick={() => history.push('/listpodcast')}>Podcast List</MenuItem>
                 </Select>
               </FormControl>
-            </div> */}
+            </div>
           </Paper>
         </Grid>
         <Grid item xs={6} sm={3}>
           
         </Grid>
+        <Grid item xs={6} sm={3}>
+          
+        </Grid>
         <Grid item xs={12} sm={6}>
-          <Paper className={classes.paper}>
-            <Typography variant="body1">"Inspiring Quote Here"</Typography>
+          <Paper 
+          elevation={4}
+          className={classes.paper}>
+            <Typography variant="body1">"Books are a uniquely portable magic" ~ Stephen King</Typography>
           </Paper>
         </Grid>
         <Grid item xs={6} sm={3}>
-        <Paper className={classes.paper}>
             <div>
-              <Typography variant="body2">User Name {user.username}!</Typography>
+              <Typography variant="body2">User Name {user.username}</Typography>
               <Typography variant="body2">Your ID is: {user.id}</Typography>
-              <LogOutButton className="btn" />
             </div>
-          </Paper>
         </Grid>
 
       </Grid>

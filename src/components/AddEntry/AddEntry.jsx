@@ -5,6 +5,7 @@ import {
   Grid,
   TextField,
   makeStyles,
+  Typography,
   InputLabel,
   MenuItem,
   FormHelperText,
@@ -14,7 +15,9 @@ import {
   CheckBoxOutlineBlankIcon,
   CheckBoxIcon,
   Select,
+  Paper,
   Button,
+  ButtonGroup,
 } from '@material-ui/core';
 import Dialog from '@material-ui/core/Dialog';
 import DialogActions from '@material-ui/core/DialogActions';
@@ -77,44 +80,60 @@ function AddEntry() {
   const history = useHistory();
   const dispatch = useDispatch();
 
-
-
-
-
   return (
     <div className={classes.root}>
-      <div>
-        {/* ----Book Button---- */}
-        <Button variant="outlined" onClick={handleClickOpenBook}>
-          Add Book
-        </Button>
-        {/* Dialog Form */}
-        <AddBook openBook={openBook} setOpenBook={setOpenBook} />
+      <Grid container spacing={3}>
+        <Grid item xs={6} sm={3}></Grid>
+        <Grid item xs={12} sm={6}>
+          <Paper align="center" elevation={4} className={classes.paper}>
+            <Typography variant="h5">Add a New Entry</Typography>
+          </Paper>
+        </Grid>
+        <Grid item xs={6} sm={3}></Grid>
+        <Grid item xs={6} sm={3}></Grid>
+        <Grid align="center" item xs={12} sm={6}>
+          <Paper elevation={4}>
+            <div>
+              {/* ----Book Button---- */}
+              <Button variant="outlined" onClick={handleClickOpenBook}>
+                Add Book
+              </Button>
+              {/* Dialog Form */}
+              <AddBook openBook={openBook} setOpenBook={setOpenBook} />
 
-        {/* ----Movie Button---- */}
-        <Button variant="outlined" onClick={handleClickOpenMovie}>
-          Add Movie
-        </Button>
-        {/* Dialog form */}
-        <AddMovie openMovie={openMovie} setOpenMovie={setOpenMovie} />
+              {/* ----Movie Button---- */}
+              <Button variant="outlined" onClick={handleClickOpenMovie}>
+                Add Movie
+              </Button>
+              {/* Dialog form */}
+              <AddMovie openMovie={openMovie} setOpenMovie={setOpenMovie} />
 
-        {/* ----Television Button---- */}
-        <Button variant="outlined" onClick={handleClickOpenTelevision}>
-          Add Television
-        </Button>
-        {/* Dialog form */}
-        <AddTelevision openTelevision={openTelevision} setOpenTelevision={setOpenTelevision} />
+              {/* ----Television Button---- */}
+              <Button variant="outlined" onClick={handleClickOpenTelevision}>
+                Add Television
+              </Button>
+              {/* Dialog form */}
+              <AddTelevision
+                openTelevision={openTelevision}
+                setOpenTelevision={setOpenTelevision}
+              />
 
-        {/* ----Podcast Button---- */}
-        <Button variant="outlined" onClick={handleClickOpenPodcast}>
-          Add Podcast
-        </Button>
-        {/* Dialog form */}
-        <AddPodcast openPodcast={openPodcast} setOpenPodcast={setOpenPodcast} />
+              {/* ----Podcast Button---- */}
+              <Button variant="outlined" onClick={handleClickOpenPodcast}>
+                Add Podcast
+              </Button>
+              {/* Dialog form */}
+              <AddPodcast
+                openPodcast={openPodcast}
+                setOpenPodcast={setOpenPodcast}
+              />
+            </div>
+          </Paper>
+        </Grid>
+        <Grid item xs={6} sm={3}></Grid>
 
-      </div>
-
-      {/* select media type */}
+        {/* select media type */}
+      </Grid>
     </div>
   );
 } //end AddEntry
