@@ -26,6 +26,7 @@ import ListMovie from '../ListMovie/ListMovie';
 import ListTelevision from '../ListTelevision/ListTelevision';
 import ListPodcast from '../ListPodcast/ListPodcast';
 import EditEntry from '../EditEntry/EditEntry';
+import NavDrawer from '../NavDrawer/NavDrawer';
 
 import './App.css';
 
@@ -59,6 +60,7 @@ function App() {
     <Router>
       <div>
         <Nav />
+        <NavDrawer />
         <Switch>
           {/* Visiting localhost:3000 will redirect to localhost:3000/home */}
           <Redirect exact from="/" to="/home" />

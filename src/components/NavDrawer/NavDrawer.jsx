@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import LogOutButton from '../LogOutButton/LogOutButton';
-import './Nav.css';
+
 import {useSelector} from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import clsx from 'clsx';
@@ -15,9 +15,12 @@ import {
   ListItemIcon, 
   ListItem, 
   Divider } from '@material-ui/core';
-import HomeOutlinedIcon from '@material-ui/icons/HomeOutlined';
-import BookOutlinedIcon from '@material-ui/icons/BookOutlined';
-import AddCircleOutlineOutlinedIcon from '@material-ui/icons/AddCircleOutlineOutlined';
+import AddIcon from '@material-ui/icons/Add';
+import HomeIcon from '@material-ui/icons/Home';
+import BookIcon from '@material-ui/icons/Book';
+import Avatar from '@material-ui/core/Avatar';
+import ListItemAvatar from '@material-ui/core/ListItemAvatar';
+
 
 const useStyles = makeStyles({
   list: {
@@ -63,63 +66,77 @@ function NavDrawer() {
     setState({ ...state, [anchor]: open });
   };
 
-  const navList = (anchor) => (
-    <div
-        className={clsx(classes.list, {
-            [classes.fullList]: anchor === 'top' || anchor === 'bottom',
-        })}
-        role="presentation"
-        onClick={toggleDrawer(anchor, false)}
-        onKeyDown={toggleDrawer(anchor, false)}
-    >
-        <List>
-            {[
-                {
-                    text: 'Home',
-                    icon: <HomeOutlinedIcon />
-                    onClick: () => history.push('/'),
-                    
-                },
-                {
-                    text: 'Journal',
-                    icon: <BookOutlinedIcon />,
-                    onClick: () => history.push('/journal'),
-                    
-                },
-                {
-                    text: 'Add Entry',
-                    icon: <AddCircleOutlineOutlinedIcon />,
-                    onClick: () => history.push('/add'),
-                    
-                }
-                
+  const handleHome = () => {
+    history.push('/');
+  };
 
-            ].map((text, index) => (
-                const { text, icon, onClick } = item;
-                <ListItem button key={text} onClick={onClick}>
-                    {icon && <ListItemIcon>{icon}</ListItemIcon>}
-                    <ListItemText primary={text} />
-                </ListItem>
-            ))
-            }
+  const handleJournal = () => {
+      history.push('/journal');
+  };
 
-        </List>
-    </div>
-  );
+  const handleAdd = () => {
+      history.push('/add');
+  };
+
+  
 
   return (
-    <div>
     {user.id && (
+      
+    <header>
+      <div>
+        <Typography variant="h2">in media res</Typography>
+      </div>
+    <div>
+    
+      
      {['right'].map((anchor) => (
         <React.Fragment key={anchor}>
-            <Button onClick={toggleDrawer(anchor, true)}>{anchor}</Button>
-            <Drawer anchor={anchor} open={state[anchor]} onClose={toggleDrawer(anchor, false)}>
-                {navList(anchor)}
-            </Drawer>
+        <Button onClick={toggleDrawer(anchor, true)}>{anchor}</Button>
+        <Drawer anchor={anchor} open={state[anchor]} onClose={toggleDrawer(anchor, false)}>
+        <div
+          className={clsx(classes.list, {
+            [classes.fullList]: anchor === 'top' || anchor === 'bottom',
+          })}
+          role="presentation"
+          onClick={toggleDrawer(anchor, false)}
+          onKeyDown={toggleDrawer(anchor, false)}
+        >
+          <List>
+              <ListItem autoFocus button onClick={handleHome}>
+                  <ListItemAvatar>
+                      <Avatar>
+                          <HomeIcon />
+                      </Avatar>
+                   </ListItemAvatar>
+                  <ListItemText primary="Home" />
+               </ListItem>
+               <ListItem autoFocus button onClick={handleJournal}>
+                  <ListItemAvatar>
+                      <Avatar>
+                          <BookIcon />
+                       </Avatar>
+                  </ListItemAvatar>
+                  <ListItemText primary="Journal" />
+                </ListItem>
+                <ListItem autoFocus button onClick={handleAdd}>
+                   <ListItemAvatar>
+                      <Avatar>
+                          <AddIcon />
+                       </Avatar>
+                    </ListItemAvatar>
+                    <ListItemText primary="Add" />
+                </ListItem>
+            </List>
+        </div>
+        </Drawer>
         </React.Fragment>
      ))}             
-    )}
+    
+  
     </div>
+    </header>
+    )}
   );
 }; //end navDrawer
 
