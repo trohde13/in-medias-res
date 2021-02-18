@@ -102,8 +102,7 @@ function NavDrawer() {
       </Grid>
       <Grid item xs={6} sm={3}></Grid>
       <Grid 
-      item 
-      justify="flex-end"
+      item
       xs={6} sm={3}>
     <div>
     

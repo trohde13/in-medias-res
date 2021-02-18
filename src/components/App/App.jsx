@@ -36,6 +36,23 @@ import { purple } from '@material-ui/core/colors';
 import Button from '@material-ui/core/Button';
 
 const theme = createMuiTheme({
+  typography: {
+    h1: {
+      fontFamily: "Nothing You Could Do"
+    },
+    h2: {
+      fontFamily: "Nothing You Could Do" 
+    },
+    h3: {
+      fontFamily: "Nothing You Could Do"
+    },
+    h4: {
+      fontFamily: "Nothing You Could Do"
+    },
+    h5: {
+      fontFamily: "Nothing You Could Do"
+    },
+  },
   palette: {
     primary: {
       // Purple and green play nicely together.
