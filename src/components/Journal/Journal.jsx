@@ -18,11 +18,15 @@ import {
 } from '@material-ui/core';
 
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
+import Pagination from '@material-ui/lab/Pagination';
 import JournalItem from '../JournalItem/JournalItem';
 
 const useStyles = makeStyles((theme) => ({
   root: {
     width: '100%',
+    '& > *': {
+      marginTop: theme.spacing(2),
+    },
   },
   heading: {
     fontSize: theme.typography.pxToRem(15),
@@ -43,6 +47,11 @@ function Journal() {
     dispatch({ type: 'FETCH_DATE' });
     dispatch({ type: 'FETCH_MEDIA' });
   }, []);
+
+  const [page, setPage] = React.useState(1);
+  const handleChange = (event, value) => {
+    setPage(value);
+  };
 
   return (
     <main>
@@ -98,6 +107,19 @@ function Journal() {
               </Grid>
             );
           })}
+        </Grid>
+        <Grid item xs={6} sm={3}></Grid>
+        <Grid item xs={6} sm={3}></Grid>
+        <Grid 
+          item 
+          align="center" 
+          xs={12} sm={6}
+        >
+          <div className={classes.root}>
+            <Typography variant="body2">Page: {page}</Typography>
+            <Pagination count={10} size="large" onChange={handleChange} />
+        
+          </div>
         </Grid>
         <Grid item xs={6} sm={3}></Grid>
       </Grid>

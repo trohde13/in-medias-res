@@ -47,7 +47,7 @@ function LandingPage() {
           </Typography>
 
           <Typography variant="body1">
-            So much focus in the world is on social media, consuming only to share.
+            So much focus in the world is on social media, sharing everything we do.
             in media res is focused on taking those things that we love and allowing us
             a private space to collect what we are reading, watching, and listening to 
             with room to reflect.
