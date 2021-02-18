@@ -109,13 +109,13 @@ function AddBook({openBook, setOpenBook}) {
             date: '',
         });
 
-        history.push('/journal')
+        history.push('/user')
 
     }; //end handleSubmit
 
-    //onClick function to cancel adding media and return to journal page
-    const sendJournal = () => {
-        history.push('/journal');
+    //onClick function to cancel adding media and return to home page
+    const sendHome = () => {
+        history.push('/user');
     }; //end sendHome
 
   return (
@@ -225,7 +225,7 @@ function AddBook({openBook, setOpenBook}) {
         {/* buttons for cancel, add new media, submit */}
         <DialogActions>
           <div>
-            <Button variant="outlined" onClick={sendJournal}>
+            <Button variant="outlined" onClick={sendHome}>
               Cancel
             </Button>
             {/* <Button
