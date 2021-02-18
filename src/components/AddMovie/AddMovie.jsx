@@ -207,9 +207,9 @@ function AddMovie({openMovie, setOpenMovie}) {
                   <MenuItem value="">
                     <em>None</em>
                   </MenuItem>
-                  <MenuItem value={'Current'}>Current</MenuItem>
-                  <MenuItem value={'Finished'}>Finished</MenuItem>
-                  <MenuItem value={'Abandoned'}>Abandoned</MenuItem>
+                  <MenuItem value={'current'}>Current</MenuItem>
+                  <MenuItem value={'finished'}>Finished</MenuItem>
+                  <MenuItem value={'abandoned'}>Abandoned</MenuItem>
                 </Select>
               </FormControl>
             </div>

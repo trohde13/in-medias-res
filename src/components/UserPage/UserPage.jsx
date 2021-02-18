@@ -13,7 +13,8 @@ import {
   TextField,
   Select, 
   InputLabel,
-  MenuItem } from '@material-ui/core';
+  MenuItem,
+  Divider } from '@material-ui/core';
 
 
 const useStyles = makeStyles((theme) => ({
@@ -106,7 +107,15 @@ function UserPage() {
           <Paper 
           elevation={4}
           className={classes.paper}>
-            <Typography variant="body1">"Books are a uniquely portable magic" ~ Stephen King</Typography>
+            <Typography variant="body1">"Books are a uniquely portable magic"</Typography>
+            <Typography variant="body1">~ Stephen King</Typography>
+            <Divider />
+            <Typography variant="body1">
+              “Movies touch our hearts and awaken our vision, and change the way we see things. 
+              They take us to other places, they open doors and minds. 
+              Movies are the memories of our life time, we need to keep them alive.” 
+            </Typography>
+            <Typography variant="body1">~ Martin Scorsese</Typography>
           </Paper>
         </Grid>
         <Grid item xs={6} sm={3}>

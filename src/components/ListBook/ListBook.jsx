@@ -43,7 +43,9 @@ function ListBook() {
   const handleJournal = () => {
     history.push('/journal');
   };
+
   console.log('log of media in journal', media);
+  
   return (
     <>
       <div className={classes.root}>
