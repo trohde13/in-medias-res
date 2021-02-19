@@ -2,15 +2,7 @@ import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import './LandingPage.css';
 import { makeStyles } from '@material-ui/core/styles';
-import { 
-  Paper, 
-  Grid, 
-  Button, 
-  Typography, 
-  FormControl, 
-  TextField,
-  InputLabel,
-  MenuItem } from '@material-ui/core';
+import { Typography } from '@material-ui/core';
 
 
 const useStyles = makeStyles((theme) => ({

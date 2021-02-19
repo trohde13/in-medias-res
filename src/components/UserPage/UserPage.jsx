@@ -49,7 +49,7 @@ function UserPage() {
           elevation={4}
           className={classes.paper}
           >
-            <Typography variant="h4">Welcome to in media res</Typography>
+            <Typography variant="h4">Welcome to in medias res</Typography>
             <Typography variant="body1">your personal journal of everything you love to read, watch & listen to</Typography>
           </Paper>
         </Grid>

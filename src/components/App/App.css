@@ -40,7 +40,7 @@ Button
   border-color: #014041;
   border-width: 1px 1px 3px;
   border-radius: 4px;
-  background-color: #ae04fd;
+  background-color: #5c6bc0;
   color: #f8f8f8;
   font-size: 1.1rem;
   outline: 0;
@@ -63,7 +63,7 @@ Button
 }
 
 .btn:hover {
-  background-color: #8906c5;
+  background-color: #26418f;
   text-decoration: none;
 }
 
@@ -80,8 +80,8 @@ Button
 
 .btn_asLink:hover {
   background-color: transparent;
-  border-color: #ae04fd;
-  color: #ae04fd;
+  border-color: #5c6bc0;
+  color: #5c6bc0;
 }
 
 /* --------------------------------------------------------------------------------

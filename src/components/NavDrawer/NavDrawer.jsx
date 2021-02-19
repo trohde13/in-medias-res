@@ -97,7 +97,7 @@ function NavDrawer() {
         item
         xs={12} sm={6}> 
       <div>
-        <Typography variant="h2">in media res</Typography>
+        <Typography variant="h2">in medias res</Typography>
       </div>
       </Grid>
       <Grid item xs={6} sm={3}></Grid>

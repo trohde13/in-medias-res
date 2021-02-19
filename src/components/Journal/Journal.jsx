@@ -71,7 +71,6 @@ function Journal() {
             <Paper>
               <Button 
               variant="outlined"
-              color="primary"
               onClick={() => history.push('/add')}
               >
                 ADD ENTRY
