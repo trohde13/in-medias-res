@@ -20,7 +20,7 @@ function* fetchBook() {
         const book = yield axios.get('/api/book');
         console.log('get all:', book.data);
         yield put({ type: 'SET_BOOK', payload: book.data });
-    } catch {
+    } catch (error) {
         console.error('ERROR in getting book', error)
     }
 
