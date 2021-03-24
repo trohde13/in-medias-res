@@ -1,13 +1,24 @@
 
-# EDA Project
-This version uses React, Redux, Express, Passport, and PostgreSQL (a full list of dependencies can be found in `package.json`).
+# in medias res
 
-We **STRONGLY** recommend following these instructions carefully. It's a lot, and will take some time to set up, but your life will be much easier this way in the long run.
+## Description
 
-## Use the Template for This Repository (Don't Clone)
+_Duration: 2 Week Sprint_
 
-- Don't Fork or Clone. Instead, click the `Use this Template` button, and make a copy to your personal account.
+We all have things in our lives that we're passionate about and when we're passionate about something we will let our data nerd flag fly: fantasy football players will track players and stats, runners will track routes and miles, foodies will track recipes and restaurants, and gamers will have whole worlds that they are keeping track of. I track my media consumption. It started with the books I was reading each year and quickly blossomed to encompass the movies and television that I was watching and now the podcasts that I'm listening to. While some apps will let you keep track of some of these, none of them will let you track all of them and they all have a social media focus attached, which has the effect of putting a focus on reviews over reflection and comments over contemplation.
 
+in medias res is a media journal app that addresses that by welcoming the user with a calming dashboard that easily allows the user to add entries to their journal, view their journal, and see cumulative lists of the books, movies, television, and podcasts that they've enjoyed. The app is desktop based, but mobile friendly, and designed to be easy to use.
+
+To see the fully functional site, please visit: [in medias res](https://pure-brushlands-36686.herokuapp.com/#/user)
+
+## Screen Shot
+
+![in medias res: dashboard](documentation/images/in-medias-res-main.png)
+![in medias res: add entry page](documentation/images/in-medias-res-add-entry.png)
+![in medias res: add book dialog](documentation/images/in-medias-res-add-book.png)
+![in medias res: journal](documentation/images/in-medias-res-journal.png)
+![in medias res: main list view](documentation/images/in-medias-res-main-lists.png)
+![in medias res: books read](documentation/images/in-medias-res-books-read.png)
 
 ## Prerequisites
 
@@ -17,105 +28,45 @@ Before you get started, make sure you have the following software installed on y
 - [PostrgeSQL](https://www.postgresql.org/)
 - [Nodemon](https://nodemon.io/)
 
-## Create database and table
 
-Create a new database called `prime_app` and create a `user` table:
+## Installation
 
-```SQL
-CREATE TABLE "user" (
-    "id" SERIAL PRIMARY KEY,
-    "username" VARCHAR (80) UNIQUE NOT NULL,
-    "password" VARCHAR (1000) NOT NULL
-);
-```
 
-If you would like to name your database something else, you will need to change `prime_app` to the name of your new database name in `server/modules/pool.js`
+1. Create a database named `prime_app`,
+2. The queries in the `database.sql` file are set up to create all the necessary tables and populate the needed data to allow the application to run correctly. The project is built on [Postgres](https://www.postgresql.org/download/), so you will need to make sure to have that installed. We recommend using Postico to run those queries as that was used to create the queries, 
+3. Open up your editor of choice and run an `npm install`
+4. Run `npm run server` in your terminal
+5. Run `npm run client` in your terminal
+6. The `npm run client` command will open up a new browser tab for you!
 
-## Development Setup Instructions
+## Usage
+How does someone use this application? Tell a user story here.
 
-- Run `npm install`
-- Create a `.env` file at the root of the project and paste this line into the file:
-  ```
-  SERVER_SESSION_SECRET=superDuperSecret
-  ```
-  While you're in your new `.env` file, take the time to replace `superDuperSecret` with some long random string like `25POUbVtx6RKVNWszd9ERB9Bb6` to keep your application secure. Here's a site that can help you: [https://passwordsgenerator.net/](https://passwordsgenerator.net/). If you don't do this step, create a secret with less than eight characters, or leave it as `superDuperSecret`, you will get a warning.
-- Start postgres if not running already by using `brew services start postgresql`
-- Run `npm run server`
-- Run `npm run client`
-- Navigate to `localhost:3000`
+1. The user logs in or registers for an account on the landing page.
+2. From the dashboard, the user may choose to add an entry, view their journal, or choose a list from media types to view.
+3. When adding an entry, the user selects Add Entry, which brings them to the Add Entry page. They will select they type of media that they are adding to their journal, which will trigger a Dialog to pop up with the relevant form. Once the user fills in the form, the entry will be added to the users journal and the user will be returned to the dashboard.
+4. When viewing the journal, the user selects Your Journal, which brings the user to the journal page. They may select the date they wish to view, which expands the accordion for that day and shows cards with each entry (category of media, title, and accompanying details). Each card also has buttons to Edit or Delete the entry.
+5. Returning to the Dashboard, the user may choose a media category from the Select menu and view all completed items on that list. Once a user marks a book, movie, television show, or podcast as "finished" it's immediately added to that list!
+6. The Dashboard, Journal, and Add Entry pages are also easily accessible from the hamburger menu in the top right corner of every page.
 
-## Debugging
 
-To debug, you will need to run the client-side separately from the server. Start the client by running the command `npm run client`. Start the debugging server by selecting the Debug button.
+## Built With
 
-![VSCode Toolbar](documentation/images/vscode-toolbar.png)
+This application uses the following technologies:
 
-Then make sure `Launch Program` is selected from the dropdown, then click the green play arrow.
+- [React](https://reactjs.org/)
+- [Redux](https://maven.apache.org/)
+- [Redux-Sagas](https://redux-saga.js.org/)
+- [Express](https://expressjs.com/)
+- [PostgreSQL](https://www.postgresql.org/)
+- [Material-UI](https://material-ui.com/)
 
-![VSCode Debug Bar](documentation/images/vscode-debug-bar.png)
 
-## Testing Routes with Postman
+(a full list of dependencies can be found in `package.json`)
 
-To use Postman with this repo, you will need to set up requests in Postman to register a user and login a user at a minimum.
 
-Keep in mind that once you using the login route, Postman will manage your session cookie for you just like a browser, ensuring it is sent with each subsequent request. If you delete the `localhost` cookie in Postman, it will effectively log you out.
+## Acknowledgement
+Thanks to [Prime Digital Academy](www.primeacademy.io) who equipped and helped me to make this application a reality. (Thank your people)
 
-1. Start the server - `npm run server`
-2. [Import the sample routes JSON file](./PostmanPrimeSoloRoutes.json) by clicking `Import` in Postman. Select the file.
-3. Click `Collections` and `Send` the following three calls in order:
-   1. `POST /api/user/register` registers a new user, see body to change username/password
-   2. `POST /api/user/login` will login a user, see body to change username/password
-   3. `GET /api/user` will get user information, by default it's not very much
-
-After running the login route above, you can try any other route you've created that requires a logged in user!
-
-## Production Build
-
-Before pushing to Heroku, run `npm run build` in terminal. This will create a build folder that contains the code Heroku will be pointed at. You can test this build by typing `npm start`. Keep in mind that `npm start` will let you preview the production build but will **not** auto update.
-
-- Start postgres if not running already by using `brew services start postgresql`
-- Run `npm start`
-- Navigate to `localhost:5000`
-
-## Lay of the Land
-
-There are a few videos linked below that show a walkthrough the client and sever setup to help acclimatize to the boilerplate. Please take some time to watch the videos in order to get a better understanding of what the boilerplate is like.
-
-- [Initial Set](https://vimeo.com/453297271)
-- [Server Walkthrough](https://vimeo.com/453297212)
-- [Client Walkthrough](https://vimeo.com/453297124)
-
-Directory Structure:
-
-- `src/` contains the React application
-- `public/` contains static assets for the client-side
-- `build/` after you build the project, contains the transpiled code from `src/` and `public/` that will be viewed on the production site
-- `server/` contains the Express App
-
-This code is also heavily commented. We recommend reading through the comments, getting a lay of the land, and becoming comfortable with how the code works before you start making too many changes. If you're wondering where to start, consider reading through component file comments in the following order:
-
-- src/components
-  - App/App
-  - Footer/Footer
-  - Nav/Nav
-  - AboutPage/AboutPage
-  - InfoPage/InfoPage
-  - UserPage/UserPage
-  - LoginPage/LoginPage
-  - RegisterPage/RegisterPage
-  - LogOutButton/LogOutButton
-  - ProtectedRoute/ProtectedRoute
-
-## Deployment
-
-1. Create a new Heroku project
-1. Link the Heroku project to the project GitHub Repo
-1. Create an Heroku Postgres database
-1. Connect to the Heroku Postgres database from Postico
-1. Create the necessary tables
-1. Add an environment variable for `SERVER_SESSION_SECRET` with a nice random string for security
-1. In the deploy section, select manual deploy
-
-## Update Documentation
-
-Customize this ReadMe and the code comments in this project to read less like a starter repo and more like a project. Here is an example: https://gist.github.com/PurpleBooth/109311bb0361f32d87a2
+## Support
+If you have suggestions or issues, please email me at rohde.t@gmail.com or find me at [theThomasRohde.com](www.theThomasRohde.com)
