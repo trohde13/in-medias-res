@@ -66,7 +66,7 @@ This application uses the following technologies:
 
 
 ## Acknowledgement
-Thanks to all of the staff at [Prime Digital Academy](www.primeacademy.io) who equipped and helped me to make this application a reality, especially my instructor Dane Smith. Thank you to the Zhu Cohort for the all of the collaboration that lead to this point and thanks especially to Kevin Burk and Michael Dunn, who provided assistance at key intervals of the creation of this app.
+Thanks to all of the staff at [Prime Digital Academy](https://www.primeacademy.io) who equipped and helped me to make this application a reality, especially my instructor Dane Smith. Thank you to the Zhu Cohort for the all of the collaboration that lead to this point and thanks especially to Kevin Burk and Michael Dunn, who provided assistance at key intervals of the creation of this app.
 
 ## Support
 If you have suggestions or issues, please email me at rohde.t@gmail.com or find me at [theThomasRohde.com](http://www.theThomasRohde.com)
