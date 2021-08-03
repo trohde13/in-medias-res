@@ -51,7 +51,7 @@ function ListTelevision() {
           <Grid item xs={6} sm={3}></Grid>
           <Grid item xs={12} sm={6}>
             <Paper align="center" elevation={4} className={classes.paper}>
-              <Typography variant="h4">Television Shows I've Watched To:</Typography>
+              <Typography variant="h4">Television Shows I've Watched:</Typography>
             </Paper>
           </Grid>
           <Grid item xs={6} sm={3}></Grid>
