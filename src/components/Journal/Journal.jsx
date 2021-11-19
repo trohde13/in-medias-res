@@ -20,6 +20,7 @@ import {
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import Pagination from '@material-ui/lab/Pagination';
 import JournalItem from '../JournalItem/JournalItem';
+import useQueue from '../useQueue/useQueue';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -47,6 +48,10 @@ function Journal() {
     dispatch({ type: 'FETCH_DATE' });
     dispatch({ type: 'FETCH_MEDIA' });
   }, []);
+
+  useEffect(useQueue, [])
+    //window.QueueIt.validateUser()
+    ;
 
   const [page, setPage] = React.useState(1);
   const handleChange = (event, value) => {

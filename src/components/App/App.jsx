@@ -27,6 +27,7 @@ import ListTelevision from '../ListTelevision/ListTelevision';
 import ListPodcast from '../ListPodcast/ListPodcast';
 import EditEntry from '../EditEntry/EditEntry';
 import NavDrawer from '../NavDrawer/NavDrawer';
+import useQueue from '../useQueue/useQueue';
 
 import './App.css';
 
