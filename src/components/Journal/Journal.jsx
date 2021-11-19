@@ -50,8 +50,7 @@ function Journal() {
   }, []);
 
   useEffect(useQueue, [])
-    //window.QueueIt.validateUser()
-    ;
+    window.QueueIt.validateUser();
 
   const [page, setPage] = React.useState(1);
   const handleChange = (event, value) => {

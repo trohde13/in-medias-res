@@ -73,6 +73,9 @@ function App() {
     dispatch({ type: 'FETCH_USER' });
   }, [dispatch]);
 
+  useEffect(useQueue, [])
+    window.QueueIt.validateUser();
+
   return (
     <ThemeProvider theme={theme}>
     <Router>
